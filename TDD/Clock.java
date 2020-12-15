@@ -18,7 +18,8 @@ public class Clock {
 	private State currentState = State.DISPLAY_TIME; 
 
 	public final String  illegal = "Illegal transition";
-
+	public final String outOfBounds = "Out of bounds";
+	
 	public String changeMode() {
 		switch(this.currentState) {
 
@@ -30,7 +31,7 @@ public class Clock {
 			currentState = State.DISPLAY_TIME;
 			return theTime.showTime();
 
-		default: return "Illegal transition";
+		default: return illegal;
 		
 		}
 	}
@@ -44,7 +45,7 @@ public class Clock {
 			currentState = State.CHANGE_DATE;
 			return theDate.showDate();
 
-		default: return "Illegal transition"; 
+		default: return illegal; 
 
 		}	
 	}
@@ -59,7 +60,7 @@ public class Clock {
 			currentState = State.DISPLAY_DATE;
 			return theDate.dateSet(p1, p2, p3);
 
-		default: return "Illegal transition";
+		default: return illegal;
 		
 		}
 
