@@ -26,7 +26,7 @@ public class Clock {
 		case DISPLAY_TIME:
 			currentState = State.DISPLAY_DATE;
 			return theDate.showDate();
-
+ 
 		case DISPLAY_DATE: 
 			currentState = State.DISPLAY_TIME;
 			return theTime.showTime();
