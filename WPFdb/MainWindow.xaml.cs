@@ -23,14 +23,27 @@ namespace WPFdb
         public MainWindow()
         {
             InitializeComponent();
+            UniversalFunctions.setUpWindow(this);
+
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+      
+
+        private void BtnAdmin_Click(object sender, RoutedEventArgs e)
         {
-            if( sender == btnTest)
-            {
-                lblTest.Content = txtTest.Text;
-            }
+            AdminLogInWindow adminLogin = new AdminLogInWindow();
+            adminLogin.Show();
+            this.Close();
+
         }
+
+        private void BtnCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            CustomerWindow customerPage = new CustomerWindow();
+            customerPage.Show();
+            this.Close();
+        }
+
+      
     }
 }

@@ -55,6 +55,50 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminLogInWindow.xaml.cs">
+      <DependentUpon>AdminLogInWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminProductsWindow.xaml.cs">
+      <DependentUpon>AdminProductsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerRegisterWindow.xaml.cs">
+      <DependentUpon>CustomerRegisterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dbConnection.cs" />
+    <Compile Include="DBStore.cs" />
+    <Compile Include="OnlineShopDataSet.cs">
+      <DependentUpon>OnlineShopDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="OnlineShopDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OnlineShopDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SerivceAdmin.cs" />
+    <Compile Include="ServiceCustomer.cs" />
+    <Compile Include="ServiceProducts.cs" />
+    <Compile Include="ServiceSupplier.cs" />
+    <Compile Include="UniversalFunctions.cs" />
+    <Page Include="AdminLogInWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminProductsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomerLogInMenue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomerRegisterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,6 +106,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CustomerLogInMenue.xaml.cs">
+      <DependentUpon>CustomerLogInMenue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerWindow.xaml.cs">
+      <DependentUpon>CustomerWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -86,6 +136,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="OnlineShopDataSet.xsc">
+      <DependentUpon>OnlineShopDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="OnlineShopDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OnlineShopDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="OnlineShopDataSet.xss">
+      <DependentUpon>OnlineShopDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
