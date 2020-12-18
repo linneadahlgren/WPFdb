@@ -10,10 +10,11 @@ namespace WPFdb
 {
     public static class dbConnection
     {
-        public static int executeQuery(string query)
+        public static string connString =  @"Server=localhost;Database=OnlineShop;Trusted_Connection = True;";
+
+        public static int insertQuery(string query)
         {
             int rowCount = 0;
-            string connString = @"Server=localhost;Database=OnlineShop;Trusted_Connection = True;";
             SqlConnection conn = new SqlConnection(connString);
             SqlCommand sqlCommand = new SqlCommand();
 
@@ -42,13 +43,10 @@ namespace WPFdb
 
         public static String[] selectMultipleRows(string cmd)
         {
-            string connString = @"Server=localhost;Database=OnlineShop;Trusted_Connection = True;";
-
-            String[] fetchedData = new String[1];
+            String[] fetchedData = new String[5];
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
-
                 using (SqlCommand sqlCommand = new SqlCommand(cmd))
                 {
                     sqlCommand.CommandType = CommandType.Text;
@@ -60,30 +58,26 @@ namespace WPFdb
 
                         try
                         {
-                            int nbrRows = 0;
-
+                            List<String> templist = new List<String>();
                             while (sdr.Read())
                             {
-                                nbrRows++;
+                                templist.Add(sdr[0].ToString());
                             }
-
-                                fetchedData = new String[sdr.VisibleFieldCount];
-                         
-                            for (int i = 0; i < sdr.VisibleFieldCount; i++)
+                     
+                            fetchedData = new String[templist.Count()];
+                            System.Diagnostics.Debug.WriteLine("fetched data får storleketn " + templist.Count());
+                            for (int i = 0; i < templist.Count(); i++)
                             {
-                                System.Diagnostics.Debug.WriteLine("dbConnection " + sdr[i].ToString());
-                                fetchedData[i] = sdr[i].ToString();
-                            }
+                                fetchedData[i] = templist.ElementAt(i);
+                            }  
 
                         }
                         catch (Exception ex)
                         {
-                            System.Diagnostics.Debug.WriteLine("fel när data hämtades från db ");
+                            System.Diagnostics.Debug.WriteLine("fel när flera rader hämtades från db ");
                             conn.Close();
 
                         }
-
-
                     }
                     conn.Close();
                 }
@@ -94,13 +88,10 @@ namespace WPFdb
 
         public static String[] selectQuery(string cmd)
         {
-            string connString = @"Server=localhost;Database=OnlineShop;Trusted_Connection = True;";
-
             String[] fetchedData = new String[1];
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
-                
                 using (SqlCommand sqlCommand = new SqlCommand(cmd))
                 {
                     sqlCommand.CommandType = CommandType.Text;
@@ -111,15 +102,8 @@ namespace WPFdb
                         
                         try
                         {
-
                             sdr.Read();
-
-                            fetchedData = new String[sdr.VisibleFieldCount];
-                            if (sdr.HasRows)
-                            {
-                                
-
-                            }
+                            fetchedData = new string[sdr.VisibleFieldCount];
                             for (int i = 0; i < sdr.VisibleFieldCount; i++)
                             {
                                 System.Diagnostics.Debug.WriteLine("dbConnection " + sdr[i].ToString());
