@@ -41,9 +41,9 @@ namespace WPFdb
 
         }
 
-        public static String[] selectMultipleRows(string cmd)
+        public static List<String> selectMultipleRows(string cmd)
         {
-            String[] fetchedData = new String[5];
+            List<String> fetchedData = new List<String>();
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -54,23 +54,14 @@ namespace WPFdb
                     conn.Open();
                     using (SqlDataReader sdr = sqlCommand.ExecuteReader())
                     {
-
-
                         try
                         {
-                            List<String> templist = new List<String>();
                             while (sdr.Read())
                             {
-                                templist.Add(sdr[0].ToString());
+                                // denna borde vi använda för att göra en 2d array senare kanske
+                                //sdr.VisibleFieldCount()
+                                fetchedData.Add(sdr[0].ToString());
                             }
-                     
-                            fetchedData = new String[templist.Count()];
-                            System.Diagnostics.Debug.WriteLine("fetched data får storleketn " + templist.Count());
-                            for (int i = 0; i < templist.Count(); i++)
-                            {
-                                fetchedData[i] = templist.ElementAt(i);
-                            }  
-
                         }
                         catch (Exception ex)
                         {
@@ -86,9 +77,9 @@ namespace WPFdb
         }
     
 
-        public static String[] selectQuery(string cmd)
+        public static List<String> selectFromRowQuery(string cmd)
         {
-            String[] fetchedData = new String[1];
+            List<String> fetchedData = new List<string>();
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -103,11 +94,11 @@ namespace WPFdb
                         try
                         {
                             sdr.Read();
-                            fetchedData = new string[sdr.VisibleFieldCount];
+                           
                             for (int i = 0; i < sdr.VisibleFieldCount; i++)
                             {
                                 System.Diagnostics.Debug.WriteLine("dbConnection " + sdr[i].ToString());
-                                fetchedData[i] = sdr[i].ToString();
+                                fetchedData.Add(sdr[i].ToString());
                             }
 
                         }

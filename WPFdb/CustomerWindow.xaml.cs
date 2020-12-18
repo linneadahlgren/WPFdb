@@ -22,12 +22,16 @@ namespace WPFdb
     {
         private Boolean isUserSignedIn;
 
+        
+
         public CustomerWindow()
         {
             InitializeComponent();
 
             UniversalFunctions.setUpWindow(this);
-            this.isUserSignedIn = false; 
+            this.isUserSignedIn = false;
+
+            DataGridProducts.ItemsSource = ServiceProducts.getAllProductsToDisplay();
         }
 
         public CustomerWindow(Boolean logIn, String userName)

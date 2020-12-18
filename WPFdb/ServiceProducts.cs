@@ -27,5 +27,12 @@ namespace WPFdb
 
             return false;
         }
+
+        public static List<String[]> getAllProductsToDisplay()
+        {
+
+            return null;
+
+        }
     }
 }
