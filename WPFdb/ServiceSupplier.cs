@@ -12,7 +12,7 @@ namespace WPFdb
         public static String[] getAllSuppliers()
         {
             String cmd = "SELECT Name FROM supplier";
-            String[] returnedData = dbConnection.selectQuery(cmd);
+            String[] returnedData = dbConnection.selectMultipleRows(cmd);
 
        
             return returnedData;

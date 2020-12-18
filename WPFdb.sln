@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFdb", "WPFdb\WPFdb.csproj
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "General", "General", "{EF8B8D20-92B4-498C-B95B-A762DBB75E09}"
 	ProjectSection(SolutionItems) = preProject
-		dbConnection.cs = dbConnection.cs
+		WPFdb\dbConnection.cs = WPFdb\dbConnection.cs
 		WPFdb\UniversalFunctions.cs = WPFdb\UniversalFunctions.cs
 	EndProjectSection
 EndProject

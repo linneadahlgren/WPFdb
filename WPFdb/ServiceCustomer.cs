@@ -43,7 +43,7 @@ namespace WPFdb
         {
             if (isEmailAvailable(email))
             {
-                int length = dbConnection.executeQuery("insert into Customer(Email, Password, FirstName, LastName, Address, City, Country, PhoneNumber) values(('" + email
+                int length = dbConnection.insertQuery("insert into Customer(Email, Password, FirstName, LastName, Address, City, Country, PhoneNumber) values(('" + email
               + "'), ('" + password + "'), ('" + firstName+ "'), ('" +lastname+ "'), ('" + address+ "'), '', ('" + city+ "'), ('" + phonenumber + "'))");
                 System.Diagnostics.Debug.WriteLine("försökte lägga till " + email + " till db " + length + " rader påverkades ");
                 if (length == 1)

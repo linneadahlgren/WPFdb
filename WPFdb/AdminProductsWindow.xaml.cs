@@ -32,8 +32,13 @@ namespace WPFdb
 
             tbxPrice.IsEnabled = false;
             tbxPrice.Text = price.ToString();
-            
-            System.Diagnostics.Debug.WriteLine("suppliers??? "+  ServiceSupplier.getAllSuppliers().Length);
+            String[] suppliers = ServiceSupplier.getAllSuppliers();
+
+            for (int i = 0; i < suppliers.Length; i++)
+            {
+                cmboxSuppliers.Items.Add(suppliers[i]);
+                System.Diagnostics.Debug.WriteLine("suppliers??? "+  suppliers[i]);
+            }
 
 
         }
@@ -75,6 +80,11 @@ namespace WPFdb
         }
 
         private void BtnAddProduct_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
         }
