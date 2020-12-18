@@ -8,9 +8,11 @@
         Title="AdminWindow" Height="450" Width="800">
     <Grid>
         <Label Content="Admin Page" HorizontalAlignment="Left" Margin="39,17,0,0" VerticalAlignment="Top"/>
+
         <Menu x:Name="menuActions" HorizontalAlignment="Left" Height="114" Margin="34,74,0,0" VerticalAlignment="Top" Width="109">
             <MenuItem Header="_Products" Width="109" />
-            <MenuItem Header="_Suppliers" Width="109" />
+            <MenuItem Header="_Suppliers" Width="109" Click="Suppliers_Click"/>
+
             <MenuItem Header="_Discounts" Width="109" Click="MenuItem_Click" />
             <MenuItem Header="_Orders" Width="109" />
             <MenuItem Header="_History" Width="109" />
@@ -19,7 +21,7 @@
         </Menu>
         <TextBox x:Name="tbxProductName"  HorizontalAlignment="Left" Height="31" Margin="222,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
         <Label Content="Product Name" HorizontalAlignment="Left" Margin="221,34,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cmboxSuppliers" HorizontalAlignment="Left" Margin="222,151,0,0" VerticalAlignment="Top" Width="125"/>
+        <ComboBox x:Name="cmboxSuppliers" HorizontalAlignment="Left" Margin="222,151,0,0" VerticalAlignment="Top" Width="125" SelectionChanged="CmboxSuppliers_SelectionChanged"/>
         <TextBox x:Name="tbxQuantity" HorizontalAlignment="Left" Height="32" Margin="409,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="67"/>
         <ScrollBar  x:Name="scrollBarQuantity" Minimum="-5000" Maximum="0"  HorizontalAlignment="Left" Margin="456,60,0,0" VerticalAlignment="Top" Width="20" Height="31" ValueChanged="ScrollBar_ValueChanged"/>
         <Label Content="Quantity" HorizontalAlignment="Left" Margin="409,34,0,0" VerticalAlignment="Top"/>
