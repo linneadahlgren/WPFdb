@@ -32,8 +32,13 @@ namespace WPFdb
 
             tbxPrice.IsEnabled = false;
             tbxPrice.Text = price.ToString();
-            
-            System.Diagnostics.Debug.WriteLine("suppliers??? "+  ServiceSupplier.getAllSuppliers().Length);
+            String[] suppliers = ServiceSupplier.getAllSuppliers();
+
+            for (int i = 0; i < suppliers.Length; i++)
+            {
+                cmboxSuppliers.Items.Add(suppliers[i]);
+                System.Diagnostics.Debug.WriteLine("suppliers??? "+  suppliers[i]);
+            }
 
 
         }
@@ -75,6 +80,45 @@ namespace WPFdb
         }
 
         private void BtnAddProduct_Click(object sender, RoutedEventArgs e)
+        {
+            if(sender == btnAddProduct)
+            {
+                Console.WriteLine("Clicking AddProduct Button");
+                Console.WriteLine(tbxQuantity.Text + tbxPrice.Text +"\n"+cmboxSuppliers.Text);
+                Boolean isSuccessful = ServiceProducts.addProduct(tbxProductName.Text, cmboxSuppliers.Text, int.Parse(tbxQuantity.Text), int.Parse(tbxPrice.Text));
+                if (isSuccessful)
+                {
+                    tbxPrice.Clear();
+                    tbxProductName.Clear();
+                    tbxQuantity.Clear();
+                    cmboxSuppliers.SelectedIndex = -1;
+                    tbxProductName.Clear();
+                    price = 0;
+                    quantity = 0;
+                }
+                else
+                    Console.WriteLine("Something went wrong");
+             
+            }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Suppliers_Click(object sender, RoutedEventArgs e)
+        {
+            SupplierWindow supplier = new SupplierWindow();
+            supplier.Show();
+            this.Close();
+        }
+
+        private void CmboxSuppliers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
 
         }

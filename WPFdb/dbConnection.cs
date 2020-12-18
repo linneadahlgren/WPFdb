@@ -10,10 +10,11 @@ namespace WPFdb
 {
     public static class dbConnection
     {
-        public static int executeQuery(string query)
+        public static string connString =  @"Server=localhost;Database=OnlineShop;Trusted_Connection = True;";
+
+        public static int insertQuery(string query)
         {
             int rowCount = 0;
-            string connString = @"Server=localhost;Database=OnlineShop;Trusted_Connection = True;";
             SqlConnection conn = new SqlConnection(connString);
             SqlCommand sqlCommand = new SqlCommand();
 
@@ -40,15 +41,12 @@ namespace WPFdb
 
         }
 
-        public static String[] selectMultipleRows(string cmd)
+        public static List<String> selectMultipleRows(string cmd)
         {
-            string connString = @"Server=localhost;Database=OnlineShop;Trusted_Connection = True;";
-
-            String[] fetchedData = new String[1];
+            List<String> fetchedData = new List<String>();
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
-
                 using (SqlCommand sqlCommand = new SqlCommand(cmd))
                 {
                     sqlCommand.CommandType = CommandType.Text;
@@ -56,34 +54,21 @@ namespace WPFdb
                     conn.Open();
                     using (SqlDataReader sdr = sqlCommand.ExecuteReader())
                     {
-
-
                         try
                         {
-                            int nbrRows = 0;
-
                             while (sdr.Read())
                             {
-                                nbrRows++;
+                                // denna borde vi använda för att göra en 2d array senare kanske
+                                //sdr.VisibleFieldCount()
+                                fetchedData.Add(sdr[0].ToString());
                             }
-
-                                fetchedData = new String[sdr.VisibleFieldCount];
-                         
-                            for (int i = 0; i < sdr.VisibleFieldCount; i++)
-                            {
-                                System.Diagnostics.Debug.WriteLine("dbConnection " + sdr[i].ToString());
-                                fetchedData[i] = sdr[i].ToString();
-                            }
-
                         }
                         catch (Exception ex)
                         {
-                            System.Diagnostics.Debug.WriteLine("fel när data hämtades från db ");
+                            System.Diagnostics.Debug.WriteLine("fel när flera rader hämtades från db ");
                             conn.Close();
 
                         }
-
-
                     }
                     conn.Close();
                 }
@@ -92,15 +77,12 @@ namespace WPFdb
         }
     
 
-        public static String[] selectQuery(string cmd)
+        public static List<String> selectFromRowQuery(string cmd)
         {
-            string connString = @"Server=localhost;Database=OnlineShop;Trusted_Connection = True;";
-
-            String[] fetchedData = new String[1];
+            List<String> fetchedData = new List<string>();
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
-                
                 using (SqlCommand sqlCommand = new SqlCommand(cmd))
                 {
                     sqlCommand.CommandType = CommandType.Text;
@@ -111,19 +93,12 @@ namespace WPFdb
                         
                         try
                         {
-
                             sdr.Read();
-
-                            fetchedData = new String[sdr.VisibleFieldCount];
-                            if (sdr.HasRows)
-                            {
-                                
-
-                            }
+                           
                             for (int i = 0; i < sdr.VisibleFieldCount; i++)
                             {
                                 System.Diagnostics.Debug.WriteLine("dbConnection " + sdr[i].ToString());
-                                fetchedData[i] = sdr[i].ToString();
+                                fetchedData.Add(sdr[i].ToString());
                             }
 
                         }
