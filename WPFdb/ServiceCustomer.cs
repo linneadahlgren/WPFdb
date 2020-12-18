@@ -15,8 +15,8 @@ namespace WPFdb
                 System.Diagnostics.Debug.WriteLine("vi skickar til db från service " + email);
 
                 String cmd = "SELECT Email, Password from Customer where Email = ('" + email + "')";
-                String[] returnedData = dbConnection.selectQuery(cmd);
-                if(email == returnedData[0] && password == returnedData[1])
+                List<String> returnedData = dbConnection.selectFromRowQuery(cmd);
+                if(email == returnedData.ElementAt(0) && password == returnedData.ElementAt(1))
                     return true;
                 else
                     return false;
@@ -31,8 +31,8 @@ namespace WPFdb
         public static String getNameFromEmail(String email)
         {
             String cmd = "SELECT FirstName from Customer where Email = ('" + email + "')";
-            String[] returnedData = dbConnection.selectQuery(cmd);
-            if(returnedData[0] != null)
+            List<String> returnedData = dbConnection.selectFromRowQuery(cmd);
+            if(returnedData.ElementAt(0) != null)
             {
                 return returnedData[0];
             }
@@ -61,8 +61,8 @@ namespace WPFdb
                 System.Diagnostics.Debug.WriteLine("vi skickar til db från service " + email);
 
                 String cmd = "SELECT Email from Customer where Email = ('" + email + "')";
-                String[] returnedData = dbConnection.selectQuery(cmd);
-                if (email == returnedData[0])
+                List<String> returnedData = dbConnection.selectFromRowQuery(cmd);
+                if (email == returnedData.ElementAt(0))
                     return false;
                 else
                     return true;

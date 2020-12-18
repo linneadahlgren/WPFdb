@@ -9,10 +9,10 @@
         Top="200" Left="200">
 
     <Grid Margin="0,0,-6.4,-13">
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="303" Stroke="Black" VerticalAlignment="Top" Width="679" Margin="61,69,0,0"/>
         <Button x:Name="btnCustomerLogInMenu" Content="Log In" HorizontalAlignment="Left" Margin="642,34,0,0" VerticalAlignment="Top" Width="75" Click="CustomerLogInMenu"/>
         <Button x:Name="btnShowCart" Content="Show Cart" HorizontalAlignment="Left" Margin="642,383,0,0" VerticalAlignment="Top" Width="75"/>
         <Label x:Name="lblSingedInAs" Content="" HorizontalAlignment="Left" Margin="73,34,0,0" VerticalAlignment="Top"/>
+        <DataGrid x:Name="DataGridProducts" HorizontalAlignment="Left" Height="262" Margin="73,75,0,0" VerticalAlignment="Top" Width="663"/>
 
 
     </Grid>
