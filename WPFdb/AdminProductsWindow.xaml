@@ -8,9 +8,11 @@
         Title="AdminWindow" Height="450" Width="800">
     <Grid>
         <Label Content="Admin Page" HorizontalAlignment="Left" Margin="39,17,0,0" VerticalAlignment="Top"/>
-        <Menu x:Name="mneuActions" HorizontalAlignment="Left" Height="114" Margin="34,74,0,0" VerticalAlignment="Top" Width="109">
-            <MenuItem Header="_Products" Width="109" Click="MenuItem_Click_1" />
-            <MenuItem Header="_Suppliers" Width="109" Click="Suppliers_Click" />
+
+        <Menu x:Name="menuActions" HorizontalAlignment="Left" Height="114" Margin="34,74,0,0" VerticalAlignment="Top" Width="109">
+            <MenuItem Header="_Products" Width="109" />
+            <MenuItem Header="_Suppliers" Width="109" Click="Suppliers_Click"/>
+
             <MenuItem Header="_Discounts" Width="109" Click="MenuItem_Click" />
             <MenuItem Header="_Orders" Width="109" />
             <MenuItem Header="_History" Width="109" />
