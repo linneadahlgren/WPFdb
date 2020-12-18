@@ -20,8 +20,6 @@ namespace WPFdb
     public partial class DiscountsWindow : Window
     {
         private int discount = 0;
-        private int lowdisconut = 0;
-        private int highDiscount = 0;
         public DiscountsWindow()
         {
             InitializeComponent();
@@ -54,8 +52,6 @@ namespace WPFdb
 
         private void ScrollBar_Discount(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            int low = lowdisconut;
-            int high = highDiscount;
             if(sender == scrollbarDiscount)
             {
                 if (e.NewValue < e.OldValue)
