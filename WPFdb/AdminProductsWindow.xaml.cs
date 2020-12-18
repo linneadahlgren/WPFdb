@@ -81,7 +81,26 @@ namespace WPFdb
 
         private void BtnAddProduct_Click(object sender, RoutedEventArgs e)
         {
+            if(sender == btnAddProduct)
+            {
+                Console.WriteLine("Clicking AddProduct Button");
+                Console.WriteLine(tbxQuantity.Text + tbxPrice.Text +"\n"+cmboxSuppliers.Text);
+                Boolean isSuccessful = ServiceProducts.addProduct(tbxProductName.Text, cmboxSuppliers.Text, int.Parse(tbxQuantity.Text), int.Parse(tbxPrice.Text));
+                if (isSuccessful)
+                {
+                    tbxPrice.Clear();
+                    tbxProductName.Clear();
+                    tbxQuantity.Clear();
+                    cmboxSuppliers.SelectedIndex = -1;
+                    tbxProductName.Clear();
+                    price = 0;
+                    quantity = 0;
 
+
+
+                }
+             
+            }
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
