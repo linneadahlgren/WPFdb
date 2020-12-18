@@ -88,5 +88,21 @@ namespace WPFdb
         {
 
         }
+        private void Suppliers_Click(object sender, RoutedEventArgs e)
+        {
+            SupplierWindow supplier = new SupplierWindow();
+            supplier.Show();
+            this.Close();
+        }
+
+        private void CmboxSuppliers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

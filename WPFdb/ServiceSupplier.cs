@@ -17,5 +17,16 @@ namespace WPFdb
        
             return returnedData;
         }
+
+        public static Boolean addSupplier(String name, int phonenumber, String address)
+        {
+            String cmd = "INSERT into Supplier (name, phonenumber, address) values (('" + name + "'), ('" + phonenumber + "'), ('" + address + "'))";
+            int successful = dbConnection.insertQuery(cmd);
+
+            if (successful == 1)
+                return true;
+
+            return false;
+        }
     }
 }

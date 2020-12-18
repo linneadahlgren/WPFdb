@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddSupplier.xaml.cs">
+      <DependentUpon>AddSupplier.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminLogInWindow.xaml.cs">
       <DependentUpon>AdminLogInWindow.xaml</DependentUpon>
     </Compile>
@@ -69,7 +72,14 @@
     <Compile Include="ServiceCustomer.cs" />
     <Compile Include="ServiceProducts.cs" />
     <Compile Include="ServiceSupplier.cs" />
+    <Compile Include="SupplierWindow.xaml.cs">
+      <DependentUpon>SupplierWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UniversalFunctions.cs" />
+    <Page Include="AddSupplier.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdminLogInWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -108,6 +118,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SupplierWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
