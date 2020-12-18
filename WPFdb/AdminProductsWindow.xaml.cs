@@ -95,10 +95,9 @@ namespace WPFdb
                     tbxProductName.Clear();
                     price = 0;
                     quantity = 0;
-
-
-
                 }
+                else
+                    Console.WriteLine("Something went wrong");
              
             }
         }
