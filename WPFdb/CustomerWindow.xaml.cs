@@ -27,7 +27,12 @@ namespace WPFdb
             InitializeComponent();
 
             UniversalFunctions.setUpWindow(this);
-            this.isUserSignedIn = false; 
+
+            this.isUserSignedIn = false;
+
+            btnShowCart.IsEnabled = isUserSignedIn;
+            DataGridProducts.DataContext = ServiceProducts.getAllProductsToDisplay().DefaultView;
+
         }
 
         public CustomerWindow(Boolean logIn, String userName)
@@ -35,11 +40,15 @@ namespace WPFdb
             InitializeComponent();
 
             UniversalFunctions.setUpWindow(this);
+
+            DataGridProducts.DataContext = ServiceProducts.getAllProductsToDisplay().DefaultView;
+
             this.isUserSignedIn = logIn;
             if (this.isUserSignedIn)
             {
                 btnCustomerLogInMenu.Visibility = Visibility.Hidden;
                 lblSingedInAs.Content = "Signed in as " + userName;
+                btnShowCart.IsEnabled = isUserSignedIn;
             }
 
         }

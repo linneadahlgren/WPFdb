@@ -41,9 +41,10 @@ namespace WPFdb
 
         }
 
-        public static String[] selectMultipleRows(string cmd)
+
+        public static List<String[]> selectMultipleRows(string cmd)
         {
-            String[] fetchedData = new String[5];
+            List<String[]> fetchedData = new List<String[]>();
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -61,15 +62,14 @@ namespace WPFdb
                             List<String> templist = new List<String>();
                             while (sdr.Read())
                             {
-                                templist.Add(sdr[0].ToString());
+      
+                                String[] tempList = new string[sdr.VisibleFieldCount];                                
+                                for (int i = 0; i < sdr.VisibleFieldCount; i++)
+                                {
+                                    tempList[i] = sdr[i].ToString();
+                                }
+                                fetchedData.Add(tempList);
                             }
-                     
-                            fetchedData = new String[templist.Count()];
-                            System.Diagnostics.Debug.WriteLine("fetched data får storleketn " + templist.Count());
-                            for (int i = 0; i < templist.Count(); i++)
-                            {
-                                fetchedData[i] = templist.ElementAt(i);
-                            }  
 
                         }
                         catch (Exception ex)
