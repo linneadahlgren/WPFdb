@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Windows.Controls;
 
 namespace WPFdb
 {
@@ -32,26 +33,56 @@ namespace WPFdb
 
         public static List<String[]> getAllProducts()
         {
-            String cmd = "SELECT * from Products";
+            String cmd = "SELECT code, name, price, supplier from Products";
 
             return dbConnection.selectMultipleRows(cmd);
 
         }
-        public static DataTable getAllProductsToDisplay()
+        public static DataTable getProductsToDisplay()
         {
             List<String[]> list = getAllProducts();
-
+            Console.WriteLine(" hallå " + list.Count);
             DataTable table = new DataTable();
-            String[] columnHeader = new String[] { "Code", "Product", "Quantity", "Price", "Supplier", "Discount"};
+            String[] columnHeader = new String[] { "Code", "Product", "Price", "Supplier", "Discount"};
 
-            foreach( var col in columnHeader)
+
+            foreach ( var col in columnHeader) 
                 table.Columns.Add(col);
 
             foreach (var array in list)
                 table.Rows.Add(array);
 
+            DataColumn cbBuy = new DataColumn("Buy", typeof(Boolean));
+            cbBuy.DefaultValue = false;
+            
+
+            table.Columns.Add(cbBuy);
+
             return table;
 
+        }
+
+        public static DataTable getShoppingList(DataTable allProducts)
+        {
+            DataTable table = allProducts;
+            List<int> indexToDelete = new List<int>();
+            int i = 0;
+            foreach (DataRow row in table.Rows)
+            {
+                Console.WriteLine(row[1] + " " + row["Buy"] + " index " + i.ToString());
+                if (row["Buy"].ToString() == "False")
+                {
+                    Console.WriteLine("adding " + i);
+                    indexToDelete.Add(i);
+                }
+                i++;
+            }
+            int[] fuckoff = indexToDelete.ToArray();
+
+            for (int j = fuckoff.Length - 1; j >= 0; j--)
+                table.Rows.RemoveAt(fuckoff[j]);
+
+            return table;
         }
     }
 }

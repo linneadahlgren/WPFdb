@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
 
 
 namespace WPFdb
@@ -33,7 +34,7 @@ namespace WPFdb
             this.isUserSignedIn = false;
 
             btnShowCart.IsEnabled = isUserSignedIn;
-            DataGridProducts.DataContext = ServiceProducts.getAllProductsToDisplay().DefaultView;
+            DataGridProducts.DataContext = ServiceProducts.getProductsToDisplay().DefaultView;
 
 
         }
@@ -44,7 +45,7 @@ namespace WPFdb
 
             UniversalFunctions.setUpWindow(this);
 
-            DataGridProducts.DataContext = ServiceProducts.getAllProductsToDisplay().DefaultView;
+            DataGridProducts.DataContext = ServiceProducts.getProductsToDisplay().DefaultView;
 
             this.isUserSignedIn = logIn;
             if (this.isUserSignedIn)
@@ -70,7 +71,19 @@ namespace WPFdb
             this.btnCustomerLogInMenu.Visibility = isUserSignedIn ? System.Windows.Visibility.Hidden : System.Windows.Visibility.Visible;
         }
 
+        private void BtnShowCart_Click(object sender, RoutedEventArgs e)
+        {
+            DataView data = (DataView) DataGridProducts.ItemsSource;
+           
+            DataGridProducts.DataContext = ServiceProducts.getShoppingList(data.ToTable()).DefaultView;
 
+            btnShowCart.Visibility = Visibility.Hidden;
+            btnConfirmOrder.Visibility = Visibility.Visible;
+        }
 
+        private void BtnConfirmOrder_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
