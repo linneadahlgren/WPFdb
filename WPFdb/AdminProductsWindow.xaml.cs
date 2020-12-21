@@ -102,10 +102,7 @@ namespace WPFdb
             }
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
         private void Suppliers_Click(object sender, RoutedEventArgs e)
         {
             SupplierWindow supplier = new SupplierWindow();
@@ -118,7 +115,21 @@ namespace WPFdb
 
         }
 
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+
+
+        private void Discounts_Click(object sender, RoutedEventArgs e)
+        {
+            
+            if (sender== MenuitemDiscounts){
+                DiscountsWindow discountsWindow = new DiscountsWindow();
+                discountsWindow.Show();
+                this.Close();
+
+            }
+
+        }
+
+        private void cmboxSuppliers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

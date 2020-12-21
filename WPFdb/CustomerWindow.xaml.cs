@@ -22,6 +22,8 @@ namespace WPFdb
     {
         private Boolean isUserSignedIn;
 
+        
+
         public CustomerWindow()
         {
             InitializeComponent();
@@ -32,6 +34,7 @@ namespace WPFdb
 
             btnShowCart.IsEnabled = isUserSignedIn;
             DataGridProducts.DataContext = ServiceProducts.getAllProductsToDisplay().DefaultView;
+
 
         }
 

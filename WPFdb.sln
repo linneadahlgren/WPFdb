@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.645
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFdb", "WPFdb\WPFdb.csproj", "{A48D4C81-BB44-4E93-B972-6A648555F39B}"
 EndProject
@@ -27,17 +27,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Windows", "Windows", "{BD7D
 		WPFdb\CustomerLogInMenue.xaml.cs = WPFdb\CustomerLogInMenue.xaml.cs
 		WPFdb\CustomerRegisterWindow.xaml.cs = WPFdb\CustomerRegisterWindow.xaml.cs
 		WPFdb\CustomerWindow.xaml.cs = WPFdb\CustomerWindow.xaml.cs
+		WPFdb\DiscountsWindow.xaml.cs = WPFdb\DiscountsWindow.xaml.cs
 		WPFdb\MainWindow.xaml.cs = WPFdb\MainWindow.xaml.cs
+		WPFdb\SupplierWindow.xaml.cs = WPFdb\SupplierWindow.xaml.cs
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{849DE384-5C2E-4388-8911-4512EC1B8D12}"
 	ProjectSection(SolutionItems) = preProject
 		WPFdb\AdminLogInWindow.xaml = WPFdb\AdminLogInWindow.xaml
 		WPFdb\AdminProductsWindow.xaml = WPFdb\AdminProductsWindow.xaml
+		WPFdb\DiscountsWindow.xaml = WPFdb\DiscountsWindow.xaml
+		WPFdb\MainWindow.xaml = WPFdb\MainWindow.xaml
+		WPFdb\SupplierWindow.xaml = WPFdb\SupplierWindow.xaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Customer", "Customer", "{8F091BC4-ABC1-4717-B5B3-9EF8DFD10001}"
+	ProjectSection(SolutionItems) = preProject
 		WPFdb\CustomerLogInMenue.xaml = WPFdb\CustomerLogInMenue.xaml
 		WPFdb\CustomerRegisterWindow.xaml = WPFdb\CustomerRegisterWindow.xaml
 		WPFdb\CustomerWindow.xaml = WPFdb\CustomerWindow.xaml
-		WPFdb\MainWindow.xaml = WPFdb\MainWindow.xaml
 	EndProjectSection
 EndProject
 Global
@@ -56,6 +64,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{849DE384-5C2E-4388-8911-4512EC1B8D12} = {BD7D528D-514E-44F8-B379-28FAD7DE795B}
+		{8F091BC4-ABC1-4717-B5B3-9EF8DFD10001} = {849DE384-5C2E-4388-8911-4512EC1B8D12}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {571CC1B5-33DC-4604-BAC1-5836F11905DE}

@@ -42,9 +42,9 @@ namespace WPFdb
         }
 
 
-        public static List<String[]> selectMultipleRows(string cmd)
+        public static List<String> selectMultipleRows(string cmd)
         {
-            List<String[]> fetchedData = new List<String[]>();
+            List<String> fetchedData = new List<String>();
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -55,11 +55,8 @@ namespace WPFdb
                     conn.Open();
                     using (SqlDataReader sdr = sqlCommand.ExecuteReader())
                     {
-
-
                         try
                         {
-                            List<String> templist = new List<String>();
                             while (sdr.Read())
                             {
       
@@ -86,9 +83,9 @@ namespace WPFdb
         }
     
 
-        public static String[] selectQuery(string cmd)
+        public static List<String> selectFromRowQuery(string cmd)
         {
-            String[] fetchedData = new String[1];
+            List<String> fetchedData = new List<string>();
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -103,11 +100,11 @@ namespace WPFdb
                         try
                         {
                             sdr.Read();
-                            fetchedData = new string[sdr.VisibleFieldCount];
+                           
                             for (int i = 0; i < sdr.VisibleFieldCount; i++)
                             {
                                 System.Diagnostics.Debug.WriteLine("dbConnection " + sdr[i].ToString());
-                                fetchedData[i] = sdr[i].ToString();
+                                fetchedData.Add(sdr[i].ToString());
                             }
 
                         }

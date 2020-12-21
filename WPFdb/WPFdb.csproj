@@ -68,6 +68,9 @@
       <DependentUpon>CustomerRegisterWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="dbConnection.cs" />
+    <Compile Include="DiscountsWindow.xaml.cs">
+      <DependentUpon>DiscountsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SerivceAdmin.cs" />
     <Compile Include="ServiceCustomer.cs" />
     <Compile Include="ServiceProducts.cs" />
@@ -97,6 +100,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiscountsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

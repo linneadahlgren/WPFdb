@@ -51,6 +51,7 @@ namespace WPFdb
                 table.Rows.Add(array);
 
             return table;
+
         }
     }
 }
