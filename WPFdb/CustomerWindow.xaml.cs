@@ -59,7 +59,16 @@ namespace WPFdb
 
         public void setQuantity(int quantity, Button quantityButton)
         {
-            quantityButton.Content = "Quantity (" + quantity.ToString() + ")"; 
+            quantityButton.Content = "Quantity (" + quantity.ToString() + ")";
+            DataRowView dataRowView = (DataRowView)(quantityButton).DataContext;
+            dataRowView.BeginEdit();
+            dataRowView["Qty"] = quantity.ToString();
+            dataRowView.EndEdit();
+
+            DataGridProducts.CommitEdit();
+
+
+
 
         }
 
@@ -78,7 +87,6 @@ namespace WPFdb
         private void BtnShowCart_Click(object sender, RoutedEventArgs e)
         {
             DataView data = (DataView) DataGridProducts.ItemsSource;
-           
             DataGridProducts.DataContext = ServiceProducts.getShoppingListFromSelectedProducts(data.ToTable()).DefaultView;
 
             btnShowCart.Visibility = Visibility.Hidden;
@@ -88,8 +96,6 @@ namespace WPFdb
         private void addQuantity_Click(object sender, RoutedEventArgs e)
         {
             DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
-
-            Console.WriteLine(" nu ska vi lägga till quantity " + dataRowView[0].ToString());
 
             QuantityPopUpWindow popUp = new QuantityPopUpWindow(this, ((Button)e.Source), int.Parse(dataRowView[0].ToString()));
 

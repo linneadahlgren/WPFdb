@@ -54,9 +54,11 @@ namespace WPFdb
 
             DataColumn cbBuy = new DataColumn("Buy", typeof(Boolean));
             cbBuy.DefaultValue = false;
-            
+            DataColumn qtn = new DataColumn("Qty", typeof(String));
+            qtn.DefaultValue = "0";
 
             table.Columns.Add(cbBuy);
+            table.Columns.Add(qtn);
 
             return table;
 
@@ -71,9 +73,9 @@ namespace WPFdb
             return int.Parse(data.ElementAt(0));
         }
 
-        public static DataTable getShoppingListFromSelectedProducts(DataTable allProducts)
+        public static DataTable getShoppingListFromSelectedProducts(DataTable table)
         {
-            DataTable table = allProducts;
+           // DataTable table = allProducts;
             List<int> indexToDelete = new List<int>();
             int i = 0;
             foreach (DataRow row in table.Rows)

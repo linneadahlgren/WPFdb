@@ -39,7 +39,6 @@ namespace WPFdb
 
         private void ScrollBar_QuantityChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            Console.WriteLine("scrollbare changes..." + e.NewValue);
             if (e.NewValue < e.OldValue)
             {
                 if(quantity < topQuantity)
