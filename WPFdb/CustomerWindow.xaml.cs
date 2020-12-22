@@ -57,7 +57,11 @@ namespace WPFdb
 
         }
 
-   
+        public void setQuantity(int quantity, Button quantityButton)
+        {
+            quantityButton.Content = "Quantity (" + quantity.ToString() + ")"; 
+
+        }
 
         private void CustomerLogInMenu(object sender, RoutedEventArgs e)
         {
@@ -75,11 +79,24 @@ namespace WPFdb
         {
             DataView data = (DataView) DataGridProducts.ItemsSource;
            
-            DataGridProducts.DataContext = ServiceProducts.getShoppingList(data.ToTable()).DefaultView;
+            DataGridProducts.DataContext = ServiceProducts.getShoppingListFromSelectedProducts(data.ToTable()).DefaultView;
 
             btnShowCart.Visibility = Visibility.Hidden;
             btnConfirmOrder.Visibility = Visibility.Visible;
         }
+
+        private void addQuantity_Click(object sender, RoutedEventArgs e)
+        {
+            DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
+
+            Console.WriteLine(" nu ska vi lägga till quantity " + dataRowView[0].ToString());
+
+            QuantityPopUpWindow popUp = new QuantityPopUpWindow(this, ((Button)e.Source), int.Parse(dataRowView[0].ToString()));
+
+            popUp.Show();
+        }
+
+        
 
         private void BtnConfirmOrder_Click(object sender, RoutedEventArgs e)
         {

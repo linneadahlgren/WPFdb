@@ -62,7 +62,16 @@ namespace WPFdb
 
         }
 
-        public static DataTable getShoppingList(DataTable allProducts)
+        public static int getAvailableProductQuantity(int productCode)
+        {
+            String cmd = "SELECT quantity from Products where code = ('" + productCode + "') ";
+
+            List<String> data = dbConnection.selectFromRowQuery(cmd);
+
+            return int.Parse(data.ElementAt(0));
+        }
+
+        public static DataTable getShoppingListFromSelectedProducts(DataTable allProducts)
         {
             DataTable table = allProducts;
             List<int> indexToDelete = new List<int>();
@@ -84,5 +93,9 @@ namespace WPFdb
 
             return table;
         }
+
+    
+
+
     }
 }

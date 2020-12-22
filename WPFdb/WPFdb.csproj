@@ -71,6 +71,9 @@
     <Compile Include="DiscountsWindow.xaml.cs">
       <DependentUpon>DiscountsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="QuantityPopUpWindow.xaml.cs">
+      <DependentUpon>QuantityPopUpWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SerivceAdmin.cs" />
     <Compile Include="ServiceCustomer.cs" />
     <Compile Include="ServiceProducts.cs" />
@@ -125,6 +128,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="QuantityPopUpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SupplierWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
