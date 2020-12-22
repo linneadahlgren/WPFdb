@@ -81,7 +81,7 @@ namespace WPFdb
 
             logInMenue.Show();
 
-            this.btnCustomerLogInMenu.Visibility = isUserSignedIn ? System.Windows.Visibility.Hidden : System.Windows.Visibility.Visible;
+            this.btnCustomerLogInMenu.Visibility = isUserSignedIn ? Visibility.Hidden : Visibility.Visible;
         }
 
         private void BtnShowCart_Click(object sender, RoutedEventArgs e)
@@ -97,7 +97,10 @@ namespace WPFdb
         {
             DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
 
+
+
             QuantityPopUpWindow popUp = new QuantityPopUpWindow(this, ((Button)e.Source), int.Parse(dataRowView[0].ToString()));
+
 
             popUp.Show();
         }
@@ -106,7 +109,12 @@ namespace WPFdb
 
         private void BtnConfirmOrder_Click(object sender, RoutedEventArgs e)
         {
+            // send the order to service which sends it to db
+        }
 
+        private void btnOrderHistory_Click(object sender, RoutedEventArgs e)
+        {
+            // see order history
         }
     }
 }
