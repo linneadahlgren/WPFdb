@@ -6,11 +6,23 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Windows.Controls;
 
+
 namespace WPFdb
 {
     public static class ServiceProducts
     {
 
+
+
+        public static Boolean updateQuantity(int productCode, int quantity)
+        {
+            String cmd = "UPDATE Products SET Quantity = ('" + quantity + "') WHERE code = ('" + productCode + "')";
+
+            if (dbConnection.insertQuery(cmd) == 1)
+                return true;
+
+            return false;
+        }
 
         public static Boolean addProduct(String productName, String supplier, int quantity, float price)
         {
@@ -31,6 +43,7 @@ namespace WPFdb
         }
 
 
+
         public static List<String[]> getAllProducts()
         {
             String cmd = "SELECT code, name, price, supplier from Products";
@@ -38,6 +51,32 @@ namespace WPFdb
             return dbConnection.selectMultipleRows(cmd);
 
         }
+
+        public static List<String[]> getAllProductsToAdmin()
+        {
+            String cmd = "SELECT code, name, price, supplier, Quantity from Products";
+
+            return dbConnection.selectMultipleRows(cmd);
+
+        }
+
+
+
+        public static DataTable getProductsToDisplayAdmin()
+        {
+            List<String[]> list = getAllProductsToAdmin();
+            Console.WriteLine(" hallå " + list.Count);
+            DataTable table = new DataTable();
+            String[] columnHeader = new String[] { "Code", "Product", "Price", "Supplier", "Quanity"};
+            foreach (var col in columnHeader)
+                table.Columns.Add(col);
+
+            foreach (var array in list)
+                table.Rows.Add(array);
+
+            return table;
+        }
+
         public static DataTable getProductsToDisplay()
         {
             List<String[]> list = getAllProducts();

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
 
 namespace WPFdb
 {
@@ -21,6 +22,7 @@ namespace WPFdb
     {
         private int quantity = 0;
         private int price = 0;
+        private int productCode = -1;
 
         public AdminProductsWindow()
         {
@@ -32,16 +34,35 @@ namespace WPFdb
 
             tbxPrice.IsEnabled = false;
             tbxPrice.Text = price.ToString();
-            String[] suppliers = ServiceSupplier.getAllSuppliers();
+            setSupplier(ServiceSupplier.getAllSuppliers());
 
+            dgProducts.DataContext = ServiceProducts.getProductsToDisplayAdmin().DefaultView;
+
+        }
+
+        private void setSupplier(String[] suppliers)
+        {
             for (int i = 0; i < suppliers.Length; i++)
             {
                 cmboxSuppliers.Items.Add(suppliers[i]);
-                System.Diagnostics.Debug.WriteLine("suppliers??? "+  suppliers[i]);
+                System.Diagnostics.Debug.WriteLine("suppliers??? " + suppliers[i]);
             }
-
-
         }
+
+        private void btnSelectProduct(object sender, RoutedEventArgs e)
+        {
+            DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
+
+
+            tbxProductName.Text = dataRowView["Product"].ToString();
+            cmboxSuppliers.SelectedValue = dataRowView["Supplier"].ToString();
+            tbxQuantity.Text = dataRowView["Quanity"].ToString();
+            tbxPrice.Text = dataRowView["Price"].ToString();
+
+            quantity = int.Parse(tbxQuantity.Text);
+            productCode = int.Parse(dataRowView["Code"].ToString());
+        }
+
 
         private void ScrollBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -61,13 +82,7 @@ namespace WPFdb
             else if(sender == scrollBarQuantity)
             {
                 if (e.NewValue < e.OldValue)
-                {
-                    System.Diagnostics.Debug.WriteLine("vad får vi??? " + e.NewValue.ToString());
-                    System.Diagnostics.Debug.WriteLine("vad får vi??? " + e.OldValue.ToString());
-
                     quantity++;
-
-                }
                 else
                 {
                     if (quantity > 0)
@@ -87,15 +102,7 @@ namespace WPFdb
                 Console.WriteLine(tbxQuantity.Text + tbxPrice.Text +"\n"+cmboxSuppliers.Text);
                 Boolean isSuccessful = ServiceProducts.addProduct(tbxProductName.Text, cmboxSuppliers.Text, int.Parse(tbxQuantity.Text), int.Parse(tbxPrice.Text));
                 if (isSuccessful)
-                {
-                    tbxPrice.Clear();
-                    tbxProductName.Clear();
-                    tbxQuantity.Clear();
-                    cmboxSuppliers.SelectedIndex = -1;
-                    tbxProductName.Clear();
-                    price = 0;
-                    quantity = 0;
-                }
+                    clearInputs();
                 else
                     Console.WriteLine("Something went wrong");
              
@@ -131,6 +138,29 @@ namespace WPFdb
 
         private void cmboxSuppliers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
+        }
+
+        private void btn_UpdateQuantity(object sender, RoutedEventArgs e)
+        {
+            Boolean ísSuccessFull = ServiceProducts.updateQuantity(productCode, int.Parse(tbxQuantity.Text));
+
+            if (ísSuccessFull)
+                clearInputs();
+            else
+                Console.WriteLine("Something went wrong when updating quantity");
+        }
+
+        private void clearInputs()
+        {
+            productCode = -1;
+            quantity = 0;
+            price = 0;
+
+            tbxQuantity.Text = "0";
+            tbxProductName.Text = "";
+            tbxPrice.Text = "0";
+            cmboxSuppliers.SelectedIndex = -1;
 
         }
     }
