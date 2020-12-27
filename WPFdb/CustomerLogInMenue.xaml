@@ -10,8 +10,8 @@
     <Grid>
         <Label x:Name="lblLogInMenue" Content="Log in to online store" HorizontalAlignment="Left" Margin="18,10,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnLogInCostumer" Content="Logga in" HorizontalAlignment="Left" Margin="230,246,0,0" VerticalAlignment="Top" Width="75" Click="BtnLogInCostumer_Click"/>
-        <TextBox x:Name="txtLogInEmail" HorizontalAlignment="Left" Height="23" Margin="185,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154"/>
-        <TextBox x:Name="txtLogInPswrd" HorizontalAlignment="Left" Height="23" Margin="185,157,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154"/>
+        <TextBox x:Name="txtLogInEmail" HorizontalAlignment="Left" Height="23" Margin="185,124,0,0" TextWrapping="Wrap" Text="hejsan" VerticalAlignment="Top" Width="154"/>
+        <TextBox x:Name="txtLogInPswrd" HorizontalAlignment="Left" Height="23" Margin="185,157,0,0" TextWrapping="Wrap" Text="hejsan" VerticalAlignment="Top" Width="154"/>
         <Label Content="Email:" HorizontalAlignment="Left" Margin="113,129,0,0" VerticalAlignment="Top"/>
         <Label  Content="Password:" HorizontalAlignment="Left" Margin="113,153,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnRegisterUser" Content="Register" HorizontalAlignment="Left" Margin="476,246,0,0" VerticalAlignment="Top" Width="75" Click="BtnRegisterUser_Click"/>

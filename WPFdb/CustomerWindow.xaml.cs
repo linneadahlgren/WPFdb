@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
 
 
 namespace WPFdb
@@ -29,9 +30,13 @@ namespace WPFdb
             InitializeComponent();
 
             UniversalFunctions.setUpWindow(this);
+
             this.isUserSignedIn = false;
 
-            DataGridProducts.ItemsSource = ServiceProducts.getAllProductsToDisplay();
+            btnShowCart.IsEnabled = isUserSignedIn;
+            DataGridProducts.DataContext = ServiceProducts.getProductsToDisplay().DefaultView;
+
+
         }
 
         public CustomerWindow(Boolean logIn, String userName)
@@ -39,16 +44,33 @@ namespace WPFdb
             InitializeComponent();
 
             UniversalFunctions.setUpWindow(this);
+
+            DataGridProducts.DataContext = ServiceProducts.getProductsToDisplay().DefaultView;
+
             this.isUserSignedIn = logIn;
             if (this.isUserSignedIn)
             {
                 btnCustomerLogInMenu.Visibility = Visibility.Hidden;
                 lblSingedInAs.Content = "Signed in as " + userName;
+                btnShowCart.IsEnabled = isUserSignedIn;
             }
 
         }
 
-   
+        public void setQuantity(int quantity, Button quantityButton)
+        {
+            quantityButton.Content = "Quantity (" + quantity.ToString() + ")";
+            DataRowView dataRowView = (DataRowView)(quantityButton).DataContext;
+            dataRowView.BeginEdit();
+            dataRowView["Qty"] = quantity.ToString();
+            dataRowView.EndEdit();
+
+            DataGridProducts.CommitEdit();
+
+
+
+
+        }
 
         private void CustomerLogInMenu(object sender, RoutedEventArgs e)
         {
@@ -59,10 +81,40 @@ namespace WPFdb
 
             logInMenue.Show();
 
-            this.btnCustomerLogInMenu.Visibility = isUserSignedIn ? System.Windows.Visibility.Hidden : System.Windows.Visibility.Visible;
+            this.btnCustomerLogInMenu.Visibility = isUserSignedIn ? Visibility.Hidden : Visibility.Visible;
         }
 
+        private void BtnShowCart_Click(object sender, RoutedEventArgs e)
+        {
+            DataView data = (DataView) DataGridProducts.ItemsSource;
+            DataGridProducts.DataContext = ServiceProducts.getShoppingListFromSelectedProducts(data.ToTable()).DefaultView;
+
+            btnShowCart.Visibility = Visibility.Hidden;
+            btnConfirmOrder.Visibility = Visibility.Visible;
+        }
+
+        private void addQuantity_Click(object sender, RoutedEventArgs e)
+        {
+            DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
 
 
+
+            QuantityPopUpWindow popUp = new QuantityPopUpWindow(this, ((Button)e.Source), int.Parse(dataRowView[0].ToString()));
+
+
+            popUp.Show();
+        }
+
+        
+
+        private void BtnConfirmOrder_Click(object sender, RoutedEventArgs e)
+        {
+            // send the order to service which sends it to db
+        }
+
+        private void btnOrderHistory_Click(object sender, RoutedEventArgs e)
+        {
+            // see order history
+        }
     }
 }

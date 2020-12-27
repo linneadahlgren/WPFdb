@@ -41,9 +41,10 @@ namespace WPFdb
 
         }
 
-        public static List<String> selectMultipleRows(string cmd)
+
+        public static List<String[]> selectMultipleRows(string cmd)
         {
-            List<String> fetchedData = new List<String>();
+            List<String[]> fetchedData = new List<String[]>();
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -58,10 +59,16 @@ namespace WPFdb
                         {
                             while (sdr.Read())
                             {
-                                // denna borde vi använda för att göra en 2d array senare kanske
-                                //sdr.VisibleFieldCount()
-                                fetchedData.Add(sdr[0].ToString());
+      
+                                String[] tempList = new string[sdr.VisibleFieldCount];                                
+                                for (int i = 0; i < sdr.VisibleFieldCount; i++)
+                                {
+                                    Console.WriteLine(sdr[i].ToString());
+                                    tempList[i] = sdr[i].ToString();
+                                }
+                                fetchedData.Add(tempList);
                             }
+
                         }
                         catch (Exception ex)
                         {

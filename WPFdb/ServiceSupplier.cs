@@ -12,10 +12,17 @@ namespace WPFdb
         public static String[] getAllSuppliers()
         {
             String cmd = "SELECT Name FROM supplier";
-            List<String> returnedData = dbConnection.selectMultipleRows(cmd);
 
+
+            List<String[]> returnedData = dbConnection.selectMultipleRows(cmd);
+            String[] supplierList = new String[returnedData.Count];
+            for(int i = 0; i < returnedData.Count; i++)
+            {
+                supplierList[i] = returnedData.ElementAt(i)[0];
+            }
        
-            return returnedData.ToArray();
+            return supplierList;
+
         }
 
         public static Boolean addSupplier(String name, int phonenumber, String address)
