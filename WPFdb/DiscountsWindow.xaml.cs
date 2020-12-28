@@ -24,7 +24,13 @@ namespace WPFdb
         {
             InitializeComponent();
             UniversalFunctions.setUpWindow(this);
+            String[] products = ServiceProducts.getAllProductsName();
 
+            for (int i = 0; i < products.Length; i++)
+            {
+                cmboxProduct.Items.Add(products[i]);
+                System.Diagnostics.Debug.WriteLine("suppliers??? " + products[i]);
+            }
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -47,7 +53,18 @@ namespace WPFdb
 
         private void btnDiscountPage_Click(object sender, RoutedEventArgs e)
         {
-
+            Console.WriteLine("Adding a Discount");
+            Boolean isSuccessful = ServiceDiscount.createDiscount(txtDiscountName.Text, int.Parse(tbxDiscount.Text));
+            if (isSuccessful)
+            {
+                Console.WriteLine("Added Discount");
+                txtDiscountName.Text = "";
+                tbxDiscount.Text = "";
+                discount = 0;
+            }
+            else{
+                Console.WriteLine("FAIL");
+            }
         }
 
         private void ScrollBar_Discount(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -85,6 +102,11 @@ namespace WPFdb
             AdminProductsWindow adminWindow = new AdminProductsWindow();
             adminWindow.Show();
             this.Close();
+        }
+
+        private void txtDiscountName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

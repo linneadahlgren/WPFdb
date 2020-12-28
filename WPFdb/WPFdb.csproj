@@ -76,6 +76,7 @@
     </Compile>
     <Compile Include="SerivceAdmin.cs" />
     <Compile Include="ServiceCustomer.cs" />
+    <Compile Include="ServiceDiscount.cs" />
     <Compile Include="ServiceProducts.cs" />
     <Compile Include="ServiceSupplier.cs" />
     <Compile Include="SupplierWindow.xaml.cs">

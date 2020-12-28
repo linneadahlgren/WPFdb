@@ -7,20 +7,20 @@
         mc:Ignorable="d"
         Title="DiscountsWindow" Height="450" Width="800">
     <Grid>
-        <Label Content="Discount Name" HorizontalAlignment="Left" Margin="211,219,0,0" VerticalAlignment="Top"/>
+        <Label Content="Discount Name" HorizontalAlignment="Left" Margin="210,262,0,0" VerticalAlignment="Top"/>
         <Label Content="Product" HorizontalAlignment="Left" Margin="213,69,0,0" VerticalAlignment="Top" Width="125"/>
         <Label Content="Discounts" HorizontalAlignment="Left" Margin="426,69,0,0" VerticalAlignment="Top" Width="125"/>
-        <Label Content="End Date" HorizontalAlignment="Left" Margin="700,217,0,0" VerticalAlignment="Top"/>
-        <Label Content="Start Date" HorizontalAlignment="Left" Margin="603,217,0,0" VerticalAlignment="Top"/>
-        <Label Content="Discount" HorizontalAlignment="Left" Margin="211,276,0,0" VerticalAlignment="Top"/>
+        <Label Content="End Date" HorizontalAlignment="Left" Margin="520,164,0,0" VerticalAlignment="Top"/>
+        <Label Content="Start Date" HorizontalAlignment="Left" Margin="423,164,0,0" VerticalAlignment="Top"/>
+        <Label Content="Discount" HorizontalAlignment="Left" Margin="210,319,0,0" VerticalAlignment="Top"/>
         <Label Content="Discount page" HorizontalAlignment="Left" Margin="273,23,0,0" VerticalAlignment="Top" Width="137"/>
-        <TextBox x:Name="txtAdminUserName" HorizontalAlignment="Left" Height="23" Margin="211,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tbxStartDate" HorizontalAlignment="Left" Height="23" Margin="603,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63"/>
-        <TextBox x:Name="tbxEndDate" HorizontalAlignment="Left" Height="23" Margin="700,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
-        <TextBox x:Name="tbxDiscount" HorizontalAlignment="Left" Height="44" Margin="211,302,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="72" RenderTransformOrigin="-1.222,3.752"/>
+        <TextBox x:Name="txtDiscountName" HorizontalAlignment="Left" Height="23" Margin="210,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="txtDiscountName_TextChanged"/>
+        <TextBox x:Name="tbxStartDate" HorizontalAlignment="Left" Height="23" Margin="423,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63"/>
+        <TextBox x:Name="tbxEndDate" HorizontalAlignment="Left" Height="23" Margin="520,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"/>
+        <TextBox x:Name="tbxDiscount" HorizontalAlignment="Left" Height="44" Margin="210,345,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="72" RenderTransformOrigin="-1.222,3.752"/>
         <Button x:Name="btnCreateDiscount" Content="Create discount" HorizontalAlignment="Left" Margin="639,331,0,0" VerticalAlignment="Top" Width="119" Height="27" Click=" btnDiscountPage_Click"/>
-        <Button x:Name="btnDeleteProduct" Content="Discount Product" HorizontalAlignment="Left" Margin="639,146,0,0" VerticalAlignment="Top" Width="119" Height="22" Click="btnDiscountPage_Click"/>
-        <ScrollBar  x:Name="scrollbarDiscount"  Minimum="-5000" Maximum="0"  HorizontalAlignment="Left" Margin="285,564,0,-187" VerticalAlignment="Top" Width="35" Height="42" ValueChanged="ScrollBar_Discount" RenderTransformOrigin="7.934,5.998">
+        <Button x:Name="btnDeleteProduct" Content="Discount Product" HorizontalAlignment="Left" Margin="639,196,0,0" VerticalAlignment="Top" Width="119" Height="22" Click="btnDiscountPage_Click"/>
+        <ScrollBar  x:Name="scrollbarDiscount"  Minimum="-5000" Maximum="0"  HorizontalAlignment="Left" Margin="284,607,0,-230" VerticalAlignment="Top" Width="35" Height="42" ValueChanged="ScrollBar_Discount" RenderTransformOrigin="7.934,5.998">
             <ScrollBar.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
