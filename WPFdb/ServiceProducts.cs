@@ -98,7 +98,7 @@ namespace WPFdb
         public static String[] getAllProductsName()
         {
 
-            String cmd = "SELECT name from Products";
+            String cmd = "SELECT Name from Products";
 
 
             List<String[]> returnedData = dbConnection.selectMultipleRows(cmd);
@@ -110,6 +110,13 @@ namespace WPFdb
             return productList;
 
         }
+        public static int getProduktCodeFromName(String name)
+       {
+            String cmd = "Select Code from Products where Name = ('" + name + "')";
+            //return int.Parse(dbConnection.selectFromRowQuery(cmd).ElementAt(0));
+            List<String[]> returnedData = dbConnection.selectMultipleRows(cmd);
+            return int.Parse(returnedData.ElementAt(0)[0]);
+        } 
 
 
 

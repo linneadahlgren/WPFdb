@@ -22,14 +22,27 @@ namespace WPFdb
         private int discount = 0;
         public DiscountsWindow()
         {
+
             InitializeComponent();
             UniversalFunctions.setUpWindow(this);
             String[] products = ServiceProducts.getAllProductsName();
-
+            loadDiscounts();
             for (int i = 0; i < products.Length; i++)
             {
                 cmboxProduct.Items.Add(products[i]);
                 System.Diagnostics.Debug.WriteLine("suppliers??? " + products[i]);
+            }
+            
+        }
+        private void loadDiscounts()
+        {
+            cmboxDiscounts.Items.Clear();
+            String[] discountList = ServiceDiscount.getallDiscountNames();
+
+            for (int i = 0; i < discountList.Length; i++)
+            {
+                cmboxDiscounts.Items.Add(discountList[i]);
+                System.Diagnostics.Debug.WriteLine("Discount??? " + discountList[i]);
             }
         }
 
@@ -61,6 +74,7 @@ namespace WPFdb
                 txtDiscountName.Text = "";
                 tbxDiscount.Text = "";
                 discount = 0;
+                loadDiscounts();
             }
             else{
                 Console.WriteLine("FAIL");
@@ -106,6 +120,24 @@ namespace WPFdb
 
         private void txtDiscountName_TextChanged(object sender, TextChangedEventArgs e)
         {
+
+        }
+
+        private void btnDiscountProdcut_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("Selected product" + cmboxProduct.SelectedItem.ToString());
+            Boolean isSuccessful = ServiceDiscount.discountProduct(cmboxProduct.SelectedItem.ToString(),cmboxDiscounts.SelectedItem.ToString(),txtStartDate.Text,txtEndDate.Text);
+            if (isSuccessful)
+            {
+                Console.WriteLine("Added Discount to product");
+                txtEndDate.Text = "";               
+                txtStartDate.Text = "";
+            }
+            else
+            {
+                Console.WriteLine("FAIL");
+            }
+
 
         }
     }
