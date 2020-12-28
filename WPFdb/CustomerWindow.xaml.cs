@@ -32,7 +32,7 @@ namespace WPFdb
             UniversalFunctions.setUpWindow(this);
 
             this.isUserSignedIn = false;
-
+            btnShowProducts.Visibility = Visibility.Hidden;
             btnShowCart.IsEnabled = isUserSignedIn;
             DataGridProducts.DataContext = ServiceProducts.getProductsToDisplay().DefaultView;
 
@@ -44,15 +44,22 @@ namespace WPFdb
             InitializeComponent();
 
             UniversalFunctions.setUpWindow(this);
+            this.isUserSignedIn = false;
 
             DataGridProducts.DataContext = ServiceProducts.getProductsToDisplay().DefaultView;
-
+            btnShowProducts.Visibility = Visibility.Hidden;
+            btnShowCart.IsEnabled = isUserSignedIn;
             this.isUserSignedIn = logIn;
             if (this.isUserSignedIn)
             {
                 btnCustomerLogInMenu.Visibility = Visibility.Hidden;
                 lblSingedInAs.Content = "Signed in as " + userName;
                 btnShowCart.IsEnabled = isUserSignedIn;
+            }
+            else
+            {
+                lblSingedInAs.Content = "Login Failed";
+
             }
 
         }
@@ -91,6 +98,8 @@ namespace WPFdb
 
             btnShowCart.Visibility = Visibility.Hidden;
             btnConfirmOrder.Visibility = Visibility.Visible;
+            btnShowProducts.Visibility = Visibility.Visible;
+
         }
 
         private void addQuantity_Click(object sender, RoutedEventArgs e)
@@ -115,6 +124,16 @@ namespace WPFdb
         private void btnOrderHistory_Click(object sender, RoutedEventArgs e)
         {
             // see order history
+        }
+
+        private void btnShowProducts_Click(object sender, RoutedEventArgs e)
+        {
+            
+            DataGridProducts.DataContext = ServiceProducts.getProductsToDisplay().DefaultView;
+            btnShowCart.Visibility = Visibility.Visible;
+            btnConfirmOrder.Visibility = Visibility.Hidden;
+            btnShowProducts.Visibility = Visibility.Hidden;
+
         }
     }
 }
