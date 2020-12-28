@@ -67,5 +67,24 @@ namespace WPFdb
                 tbxDiscount.Text = discount.ToString();
             }
         }
+        private void Suppliers_Click(object sender, RoutedEventArgs e)
+        {
+            SupplierWindow supplier = new SupplierWindow();
+            supplier.Show();
+            this.Close();
+        }
+        private void Discounts_Click(object sender, RoutedEventArgs e)
+        {
+
+                DiscountsWindow discountsWindow = new DiscountsWindow();
+                discountsWindow.Show();
+                this.Close();
+        }
+        private void Product_Click(object sender, RoutedEventArgs e)
+        {
+            AdminProductsWindow adminWindow = new AdminProductsWindow();
+            adminWindow.Show();
+            this.Close();
+        }
     }
 }

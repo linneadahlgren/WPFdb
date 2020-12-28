@@ -32,6 +32,12 @@
         </ScrollBar>
         <ComboBox x:Name="cmboxProduct" HorizontalAlignment="Left" Margin="213,95,0,0" VerticalAlignment="Top" Width="125" SelectionChanged="cmboxProdukt_SelectionChanged" RenderTransformOrigin="0.554,-0.73"/>
         <ComboBox x:Name="cmboxDiscounts" HorizontalAlignment="Left" Margin="426,95,0,0" VerticalAlignment="Top" Width="125" SelectionChanged="cmboxDiscounts_SelectionChanged"/>
-
+        <Menu x:Name="menuActions" HorizontalAlignment="Left" Height="114" Margin="34,74,0,0" VerticalAlignment="Top" Width="109">
+            <MenuItem x:Name="MenuitemProduct" Header="_Products" Width="109" Click="Product_Click"/>
+            <MenuItem x:Name="MenuitemSuppliers" Header="_Suppliers" Width="109" Click="Suppliers_Click" />
+            <MenuItem x:Name="MenuitemDiscounts" Header="_Discounts" Width="109" Click="Discounts_Click" />
+            <MenuItem x:Name="MenuitemOrders" Header="_Orders" Width="109"  />
+            <MenuItem x:Name="MenuitemHistory" Header="_History" Width="109"  />
+        </Menu>
     </Grid>
 </Window>

@@ -9,9 +9,9 @@
     <Grid>
         <Label Content="Admin Page" HorizontalAlignment="Left" Margin="39,17,0,0" VerticalAlignment="Top"/>
         <Menu x:Name="mneuActions" HorizontalAlignment="Left" Height="114" Margin="34,74,0,0" VerticalAlignment="Top" Width="109">
-            <MenuItem Header="_Products" Width="109" Click="AdminProductsItem_Click" />
+            <MenuItem x:Name="productItem" Header="_Products" Width="109" Click="AdminProductsItem_Click" />
             <MenuItem x:Name="supplierItem" Header="_Suppliers" Width="109" Click="AdminSupplierItem_Click" />
-            <MenuItem Header="_Discounts" Width="109"/>
+            <MenuItem x:Name="DiscountItem" Header="_Discounts" Width="109" Click="AdminDiscountItem_Click"/>
             <MenuItem Header="_Orders" Width="109" />
             <MenuItem Header="_History" Width="109" />
 
