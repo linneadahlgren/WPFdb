@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace WPFdb
 {
@@ -38,6 +39,27 @@ namespace WPFdb
                 return false;
 
         }
-    }
+        public static List<String[]> getAllDiscounts()
+        {
+            String cmd = "Select Name,Discount, start_date, end_date from activeDiscounts, Products where activeDiscounts.ProductCode = Products.Code;";
 
+            return dbConnection.selectMultipleRows(cmd);
+        }
+
+        public static DataTable getAllDiscountHistoryToDisplay()
+        {
+            List<String[]> list = getAllDiscounts();
+            DataTable table = new DataTable();
+            String[] column = new String[] { "Product Name","Discount", "Start date", "End date", "Price", "Discount Price" };
+
+            foreach (var col in column)
+                table.Columns.Add(col);
+
+            foreach (var array in list)
+                table.Rows.Add(array);
+
+            return table;
+        }
+
+    }
 }
