@@ -22,7 +22,7 @@ namespace WPFdb
         private int discount = 0;
         public DiscountsWindow()
         {
-
+            
             InitializeComponent();
             UniversalFunctions.setUpWindow(this);
             String[] products = ServiceProducts.getAllProductsName();
@@ -32,7 +32,7 @@ namespace WPFdb
                 cmboxProduct.Items.Add(products[i]);
                 System.Diagnostics.Debug.WriteLine("suppliers??? " + products[i]);
             }
-            
+            DataDiscountHistory.DataContext = ServiceDiscount.getAllDiscountHistoryToDisplay().DefaultView;
         }
         private void loadDiscounts()
         {
@@ -134,12 +134,18 @@ namespace WPFdb
                 txtStartDate.Text = "";
                 cmboxProduct.Text = "";
                 cmboxDiscounts.Text = "";
+                DataDiscountHistory.DataContext = ServiceDiscount.getAllDiscountHistoryToDisplay().DefaultView;
             }
             else
             {
                 Console.WriteLine("FAIL");
             }
 
+
+        }
+
+        private void DataDiscountHistory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
     }
