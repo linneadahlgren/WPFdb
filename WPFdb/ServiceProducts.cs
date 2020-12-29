@@ -134,6 +134,10 @@ namespace WPFdb
 
             return table;
         }
+
+        
+
+
         public static String[] getAllProductsName()
         {
 

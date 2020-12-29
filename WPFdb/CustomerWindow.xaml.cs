@@ -118,6 +118,10 @@ namespace WPFdb
 
         private void BtnConfirmOrder_Click(object sender, RoutedEventArgs e)
         {
+
+
+
+
             // send the order to service which sends it to db
         }
 
