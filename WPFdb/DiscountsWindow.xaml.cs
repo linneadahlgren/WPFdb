@@ -132,6 +132,8 @@ namespace WPFdb
                 Console.WriteLine("Added Discount to product");
                 txtEndDate.Text = "";               
                 txtStartDate.Text = "";
+                cmboxProduct.Text = "";
+                cmboxDiscounts.Text = "";
             }
             else
             {
