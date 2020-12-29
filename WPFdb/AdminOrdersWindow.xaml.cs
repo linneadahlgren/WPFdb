@@ -44,9 +44,10 @@ namespace WPFdb
         private void btnSelectOrder_Click(object sender, RoutedEventArgs e)
         {
             DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
-            
+            int ID = int.Parse(dataRowView["ID"].ToString());
+            dgOrderSpecs.DataContext = ServiceOrders.getOrderSpecsToDisplay(ID).DefaultView;
+            btnConfirmOrder.Visibility = Visibility.Visible;
 
-            //ServiceOrders.getAllOrderedProducts
             Console.WriteLine("testclick");
         }
 

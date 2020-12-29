@@ -40,6 +40,7 @@
         <Button x:Name="btnSeeAllOrders" Content="See All Orders" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="151,74,0,0" VerticalAlignment="Top" Width="145" Click="btnSeeAllOrders_Click"/>
         <Button x:Name="btnSeeUnconfirmedOrders"  Content="See Unconfirmed Orders" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="151,105,0,0" VerticalAlignment="Top" Width="145"/>
         <Button x:Name="btnConfirmOrder"  Content="Confirm Order" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="151,136,0,0" VerticalAlignment="Top" Width="145"/>
+        <DataGrid x:Name="dgOrderSpecs" Grid.Column="1" HorizontalAlignment="Left" Height="143" Margin="169,254,0,0" VerticalAlignment="Top" Width="179" ItemsSource="{Binding}" />
 
 
     </Grid>

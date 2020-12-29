@@ -16,10 +16,10 @@ namespace WPFdb
             return dbConnection.selectMultipleRows(cmd);
 
         }
-        public static List<String[]> getOrderedProductsFromOrder(DataRow dataRow)
+        public static List<String[]> getOrderedProductsFromOrder(int id)
         {
 
-            String cmd = "SELECT ID, ProductCode, Discount, Price, OrderID, Quantity from OrderedProducts";
+            String cmd = "SELECT ProductCode, Price, Quantity from OrderedProducts where OrderID = ('"+id+"')";
 
             return dbConnection.selectMultipleRows(cmd);
 
@@ -65,6 +65,23 @@ namespace WPFdb
             return table;
         }
 
+        public static DataTable getOrderSpecsToDisplay(int OrderId)
+        {
+            List<String[]> list = getOrderedProductsFromOrder(OrderId);
+            Console.WriteLine(" hallå " + list.Count);
+            DataTable table = new DataTable();
+            String[] columnHeader = new String[] { "ProductCode", "Price", "Quantity" };
+
+
+            foreach (var col in columnHeader)
+                table.Columns.Add(col);
+
+            foreach (var array in list)
+                table.Rows.Add(array);
+
+            return table;
+
+        }
 
 
 
