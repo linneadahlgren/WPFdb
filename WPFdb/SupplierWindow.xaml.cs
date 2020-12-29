@@ -55,5 +55,11 @@ namespace WPFdb
                 supplier.Show();
                 this.Close();          
         }
+        private void AdminDiscountItem_Click (object sender, RoutedEventArgs e)
+        {
+            DiscountsWindow discountsWindow = new DiscountsWindow();
+            discountsWindow.Show();
+            this.Close();
+        }
     }
 }

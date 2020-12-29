@@ -134,8 +134,30 @@ namespace WPFdb
 
             return table;
         }
+        public static String[] getAllProductsName()
+        {
 
-    
+            String cmd = "SELECT Name from Products";
+
+
+            List<String[]> returnedData = dbConnection.selectMultipleRows(cmd);
+            String[] productList = new String[returnedData.Count];
+            for (int i = 0; i < returnedData.Count; i++)
+            {
+                productList[i] = returnedData.ElementAt(i)[0];
+            }
+            return productList;
+
+        }
+        public static int getProduktCodeFromName(String name)
+       {
+            String cmd = "Select Code from Products where Name = ('" + name + "')";
+            //return int.Parse(dbConnection.selectFromRowQuery(cmd).ElementAt(0));
+            List<String[]> returnedData = dbConnection.selectMultipleRows(cmd);
+            return int.Parse(returnedData.ElementAt(0)[0]);
+        } 
+
+
 
 
     }

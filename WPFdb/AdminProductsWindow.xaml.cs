@@ -125,15 +125,10 @@ namespace WPFdb
 
 
         private void Discounts_Click(object sender, RoutedEventArgs e)
-        {
-            
-            if (sender== MenuitemDiscounts){
+        {           
                 DiscountsWindow discountsWindow = new DiscountsWindow();
                 discountsWindow.Show();
                 this.Close();
-
-            }
-
         }
 
         private void cmboxSuppliers_SelectionChanged(object sender, SelectionChangedEventArgs e)
