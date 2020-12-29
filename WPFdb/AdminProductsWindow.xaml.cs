@@ -158,5 +158,13 @@ namespace WPFdb
             cmboxSuppliers.SelectedIndex = -1;
 
         }
+
+        private void Orders_Click(object sender, RoutedEventArgs e)
+        {
+            AdminOrdersWindow ordersWindow = new AdminOrdersWindow();
+            ordersWindow.Show();
+            this.Close();
+
+        }
     }
 }

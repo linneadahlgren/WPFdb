@@ -1,0 +1,46 @@
+﻿<Window x:Class="WPFdb.AdminOrdersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFdb"
+        mc:Ignorable="d"
+        Title="AdminOrdersWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="169*"/>
+            <ColumnDefinition Width="227*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Admin Page" HorizontalAlignment="Left" Margin="39,17,0,0" VerticalAlignment="Top"/>
+
+        <Menu x:Name="menuActions" HorizontalAlignment="Left" Height="114" Margin="34,74,0,0" VerticalAlignment="Top" Width="109">
+            <MenuItem x:Name="MenuitemProduct" Header="_Products" Width="109"  />
+            <MenuItem x:Name="MenuitemSuppliers" Header="_Suppliers" Width="109" Click="Suppliers_Click" />
+            <MenuItem x:Name="MenuitemDiscounts" Header="_Discounts" Width="109" Click="Discounts_Click" />
+            <MenuItem x:Name="MenuitemOrders" Header="_Orders" Width="109"  />
+            <MenuItem x:Name="MenuitemHistory" Header="_History" Width="109"  />
+        </Menu>
+
+        <DataGrid x:Name="dgProducts" HorizontalAlignment="Left" Height="229" Margin="148,74,0,0" VerticalAlignment="Top" ItemsSource="{Binding}" Width="336" Grid.ColumnSpan="2" >
+
+            <DataGrid.Columns>
+
+                <DataGridTemplateColumn Header="Select">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnSelectProduct" Content="See Order Details" Click="btnSelectOrder_Click"/>
+                        </DataTemplate>
+
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="All Orders" HorizontalAlignment="Left" Height="26" Margin="148,43,0,0" VerticalAlignment="Top" Width="118"/>
+        <Button x:Name="btnSeeAllOrders" Content="See All Orders" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="151,74,0,0" VerticalAlignment="Top" Width="145" Click="btnSeeAllOrders_Click"/>
+        <Button x:Name="btnSeeUnconfirmedOrders"  Content="See Unconfirmed Orders" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="151,105,0,0" VerticalAlignment="Top" Width="145"/>
+        <Button x:Name="btnConfirmOrder"  Content="Confirm Order" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="151,136,0,0" VerticalAlignment="Top" Width="145"/>
+
+
+    </Grid>
+</Window>

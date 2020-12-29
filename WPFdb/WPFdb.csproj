@@ -61,6 +61,9 @@
     <Compile Include="AdminLogInWindow.xaml.cs">
       <DependentUpon>AdminLogInWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdminOrdersWindow.xaml.cs">
+      <DependentUpon>AdminOrdersWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminProductsWindow.xaml.cs">
       <DependentUpon>AdminProductsWindow.xaml</DependentUpon>
     </Compile>
@@ -77,6 +80,7 @@
     <Compile Include="SerivceAdmin.cs" />
     <Compile Include="ServiceCustomer.cs" />
     <Compile Include="ServiceDiscount.cs" />
+    <Compile Include="ServiceOrders.cs" />
     <Compile Include="ServiceProducts.cs" />
     <Compile Include="ServiceSupplier.cs" />
     <Compile Include="SupplierWindow.xaml.cs">
@@ -88,6 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AdminLogInWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminOrdersWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
