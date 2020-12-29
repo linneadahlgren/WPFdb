@@ -145,6 +145,7 @@ namespace WPFdb
             btnConfirmOrder.Visibility = Visibility.Hidden;
             btnShowProducts.Visibility = Visibility.Hidden;
 
+
         }
     }
 }
