@@ -15,7 +15,7 @@
 
         <Label x:Name="lblSingedInAs" Content="" HorizontalAlignment="Left" Margin="73,34,0,0" VerticalAlignment="Top" Width="438"/>
 
-        <DataGrid x:Name="DataGridProducts" HorizontalAlignment="Left" Height="262" Margin="73,75,0,0" VerticalAlignment="Top" Width="663" ItemsSource="{Binding}" SelectionChanged="DataGridProducts_SelectionChanged">
+        <DataGrid x:Name="DataGridProducts" HorizontalAlignment="Left" Height="262" Margin="73,75,0,0" VerticalAlignment="Top" Width="663" ItemsSource="{Binding}">
             <DataGrid.Columns>
 
                 <DataGridTemplateColumn Header="Quantity">

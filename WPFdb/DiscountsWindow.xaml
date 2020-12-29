@@ -39,7 +39,7 @@
             <MenuItem x:Name="MenuitemOrders" Header="_Orders" Width="109"  />
             <MenuItem x:Name="MenuitemHistory" Header="_History" Width="109"  />
         </Menu>
-        <DataGrid x:Name="DataDiscountHistory" HorizontalAlignment="Left" Height="102" Margin="10,291,0,0" VerticalAlignment="Top" Width="591" ItemsSource="{Binding}" SelectionChanged="DataDiscountHistory_SelectionChanged">
+        <DataGrid x:Name="DataDiscountHistory" HorizontalAlignment="Left" Height="102" Margin="10,291,0,0" VerticalAlignment="Top" Width="591" ItemsSource="{Binding}">
             <DataGrid.Columns>
 
                 <DataGridTemplateColumn Header="Discount History">
