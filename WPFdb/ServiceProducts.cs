@@ -92,7 +92,7 @@ namespace WPFdb
             List<String[]> list = getAllProductsIncludingDiscount();
             Console.WriteLine(" hallå " + list.Count);
             DataTable table = new DataTable();
-            String[] columnHeader = new String[] { "Code", "Product", "Price", "Supplier", "Discount(%)"};
+            String[] columnHeader = new String[] { "Code", "Product", "Price", "Supplier", "Discount"};
 
 
             foreach ( var col in columnHeader) 
@@ -178,12 +178,24 @@ namespace WPFdb
             return int.Parse(returnedData.ElementAt(0)[0]);
         } 
 
-        public static int getTotalPriceOfCart(DataTable cart)
+        public static double getTotalPriceOfCart(DataTable cart)
         {
-            int price = 0;
+            double price = 0;
             foreach (DataRow row in cart.Rows)
-                price += int.Parse(row["Price"].ToString()) * int.Parse(row["Qty"].ToString());
+            {
 
+
+                if (row["Discount"].ToString() != "")
+                {
+                    double discount = 1 - (double.Parse(row["Discount"].ToString()) / 100);
+                    Console.WriteLine(" flippar " + discount);
+                    price += double.Parse(row["Price"].ToString()) * double.Parse(row["Qty"].ToString()) * discount;
+
+                }
+                else
+                    price += double.Parse(row["Price"].ToString()) * double.Parse(row["Qty"].ToString());
+            }
+            Console.WriteLine("tot pris " + price);
             return price;
         }
 
