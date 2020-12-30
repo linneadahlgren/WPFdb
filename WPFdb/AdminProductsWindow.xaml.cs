@@ -138,9 +138,9 @@ namespace WPFdb
 
         private void btn_UpdateQuantity(object sender, RoutedEventArgs e)
         {
-            Boolean ísSuccessFull = ServiceProducts.updateQuantity(productCode, int.Parse(tbxQuantity.Text));
+            Boolean isSuccessFull = ServiceProducts.updateQuantity(productCode, int.Parse(tbxQuantity.Text));
 
-            if (ísSuccessFull)
+            if (isSuccessFull)
                 clearInputs();
             else
                 Console.WriteLine("Something went wrong when updating quantity");

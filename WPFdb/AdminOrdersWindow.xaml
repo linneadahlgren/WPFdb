@@ -21,7 +21,7 @@
             <MenuItem x:Name="MenuitemHistory" Header="_History" Width="109"  />
         </Menu>
 
-        <DataGrid x:Name="dgProducts" HorizontalAlignment="Left" Height="229" Margin="148,74,0,0" VerticalAlignment="Top" ItemsSource="{Binding}" Width="336" Grid.ColumnSpan="2" >
+        <DataGrid x:Name="dgOrders" HorizontalAlignment="Left" Height="229" Margin="148,74,0,0" VerticalAlignment="Top" ItemsSource="{Binding}" Width="336" Grid.ColumnSpan="2" >
 
             <DataGrid.Columns>
 
@@ -37,10 +37,23 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="All Orders" HorizontalAlignment="Left" Height="26" Margin="148,43,0,0" VerticalAlignment="Top" Width="118"/>
-        <Button x:Name="btnSeeAllOrders" Content="See All Orders" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="151,74,0,0" VerticalAlignment="Top" Width="145" Click="btnSeeAllOrders_Click"/>
+        <Button x:Name="btnSeeAllOrders" Content="Refresh Order List" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="151,74,0,0" VerticalAlignment="Top" Width="145" Click="btnSeeAllOrders_Click"/>
         <Button x:Name="btnSeeUnconfirmedOrders"  Content="See Unconfirmed Orders" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="151,105,0,0" VerticalAlignment="Top" Width="145"/>
-        <Button x:Name="btnConfirmOrder"  Content="Confirm Order" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="151,136,0,0" VerticalAlignment="Top" Width="145"/>
-        <DataGrid x:Name="dgOrderSpecs" Grid.Column="1" HorizontalAlignment="Left" Height="143" Margin="169,254,0,0" VerticalAlignment="Top" Width="179" ItemsSource="{Binding}" />
+        <Button x:Name="btnConfirmOrder"  Content="Confirm Order" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="151,136,0,0" VerticalAlignment="Top" Width="145" />
+        <DataGrid x:Name="dgOrderSpecs" Grid.Column="1" HorizontalAlignment="Left" Height="152" Margin="164,237,0,0" VerticalAlignment="Top" Width="272" ItemsSource="{Binding}" >
+            <DataGrid.Columns>
+
+                <DataGridTemplateColumn Header="Select">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnConfirmOrder" Content="Confirm" Click="btnConfirmOrder_Click"/>
+                        </DataTemplate>
+
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
 
 
     </Grid>

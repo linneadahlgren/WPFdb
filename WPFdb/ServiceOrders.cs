@@ -19,11 +19,12 @@ namespace WPFdb
         public static List<String[]> getOrderedProductsFromOrder(int id)
         {
 
-            String cmd = "SELECT ProductCode, Price, Quantity from OrderedProducts where OrderID = ('"+id+"')";
+            String cmd = "SELECT ProductCode, Price, Quantity, OrderID from OrderedProducts where OrderID = ('"+id+"')";
 
             return dbConnection.selectMultipleRows(cmd);
 
         }
+        
 
         public static DataTable getOrdersToDisplay()
         {
@@ -38,6 +39,7 @@ namespace WPFdb
 
             foreach (var array in list)
                 table.Rows.Add(array);
+
 
             return table;
 
@@ -70,7 +72,7 @@ namespace WPFdb
             List<String[]> list = getOrderedProductsFromOrder(OrderId);
             Console.WriteLine(" hallå " + list.Count);
             DataTable table = new DataTable();
-            String[] columnHeader = new String[] { "ProductCode", "Price", "Quantity" };
+            String[] columnHeader = new String[] { "ProductCode", "Price", "Quantity", "OrderID" };
 
 
             foreach (var col in columnHeader)
@@ -78,10 +80,23 @@ namespace WPFdb
 
             foreach (var array in list)
                 table.Rows.Add(array);
+           
 
-            return table;
+                return table;
 
         }
+        public static Boolean UpdateIsConfirmed(int OrderId)
+        {
+            
+
+            String cmd = "update Orders set isConfirmed = 1 where ID = ('" + OrderId + "')";
+            if (dbConnection.insertQuery(cmd) == 1)
+                return true;
+
+            return false;
+
+        }
+    
 
 
 

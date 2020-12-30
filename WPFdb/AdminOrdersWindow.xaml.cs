@@ -25,9 +25,10 @@ namespace WPFdb
         {
             InitializeComponent();
             UniversalFunctions.setUpWindow(this);
-            btnConfirmOrder.Visibility = Visibility.Hidden;
+            btnConfirmOrder.IsEnabled = false;
+            btnSeeUnconfirmedOrders.IsEnabled = false;
 
-            dgProducts.DataContext = ServiceOrders.getOrdersToDisplay();
+            dgOrders.DataContext = ServiceOrders.getOrdersToDisplay();
         }
         private void Suppliers_Click(object sender, RoutedEventArgs e)
         {
@@ -46,14 +47,31 @@ namespace WPFdb
             DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
             int ID = int.Parse(dataRowView["ID"].ToString());
             dgOrderSpecs.DataContext = ServiceOrders.getOrderSpecsToDisplay(ID).DefaultView;
-            btnConfirmOrder.Visibility = Visibility.Visible;
+            
 
             Console.WriteLine("testclick");
         }
-
         private void btnSeeAllOrders_Click(object sender, RoutedEventArgs e)
         {
+            dgOrders.DataContext = ServiceOrders.getOrdersToDisplay().DefaultView;
+        }
 
+        private void btnConfirmOrder_Click(object sender, RoutedEventArgs e)
+        {
+            DataRowView data = (DataRowView)((Button)e.Source).DataContext;
+            int OrderID = int.Parse(data["OrderID"].ToString());
+            Boolean isSuccesful = ServiceOrders.UpdateIsConfirmed(OrderID);
+            if(isSuccesful)
+            {
+                dgOrderSpecs.DataContext = null;
+                btnConfirmOrder.IsEnabled = false;
+                dgOrders.DataContext = ServiceOrders.getOrdersToDisplay().DefaultView;
+            }
+            else
+            {
+                Console.WriteLine("error with confirming order");
+            }
+           
         }
     }
 }
