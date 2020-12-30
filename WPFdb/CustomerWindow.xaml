@@ -32,7 +32,24 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        <Button x:Name="btnOrderHistory" Content="Show Order History" HorizontalAlignment="Left" Margin="508,383,0,0" VerticalAlignment="Top" Width="120"/>
+        <DataGrid x:Name="dgOrderHistory" HorizontalAlignment="Left" Height="262" Visibility="Hidden" Margin="73,75,0,0" VerticalAlignment="Top" Width="663" ItemsSource="{Binding}">
+            <DataGrid.Columns>
+
+                <DataGridTemplateColumn Header="Cancel order">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+
+                            <Button Name="btnCancelOrder" Content="Cancel" Click="btnCancelOrder_click"/>
+
+                        </DataTemplate>
+
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <Button x:Name="btnOrderHistory" Content="Show Order History" HorizontalAlignment="Left" Margin="508,383,0,0" VerticalAlignment="Top" Width="120" Click="btnOrderHistory_Click"/>
         <Button x:Name="btnShowProducts" Content="Show Products" HorizontalAlignment="Left" Margin="391,383,0,0" Width="93" Height="20" VerticalAlignment="Top" Click="btnShowProducts_Click"/>
         <Label x:Name="lblTotalPrice" Content="Total Price: 0" HorizontalAlignment="Left" Margin="625,342,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.911,0.508"/>
 
