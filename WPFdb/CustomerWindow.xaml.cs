@@ -32,8 +32,10 @@ namespace WPFdb
             UniversalFunctions.setUpWindow(this);
 
             this.isUserSignedIn = false;
+            
             btnShowProducts.Visibility = Visibility.Hidden;
             btnShowCart.IsEnabled = isUserSignedIn;
+            btnOrderHistory.IsEnabled = isUserSignedIn;
             DataGridProducts.DataContext = ServiceProducts.getProductsToDisplay().DefaultView;
 
 
@@ -49,6 +51,8 @@ namespace WPFdb
             DataGridProducts.DataContext = ServiceProducts.getProductsToDisplay().DefaultView;
             btnShowProducts.Visibility = Visibility.Hidden;
             btnShowCart.IsEnabled = isUserSignedIn;
+            btnOrderHistory.IsEnabled = isUserSignedIn;
+
             this.isUserSignedIn = logIn;
             currentUserEmail = userEmail;
             if (this.isUserSignedIn)
@@ -56,6 +60,8 @@ namespace WPFdb
                 btnCustomerLogInMenu.Visibility = Visibility.Hidden;
                 lblSingedInAs.Content = "Signed in as " + ServiceCustomer.getNameFromEmail(userEmail);
                 btnShowCart.IsEnabled = isUserSignedIn;
+                btnOrderHistory.IsEnabled = isUserSignedIn;
+
             }
             else
             {
@@ -127,19 +133,53 @@ namespace WPFdb
             DataView data = (DataView)DataGridProducts.ItemsSource;
             ServiceOrders.customerConfirmOrder(currentUserEmail, data.ToTable());
 
-
-
-            // send the order to service which sends it to db
         }
 
         private void btnOrderHistory_Click(object sender, RoutedEventArgs e)
         {
-            // see order history
+
+            DataGridProducts.Visibility = Visibility.Hidden;
+            dgOrderHistory.Visibility = Visibility.Visible;
+            dgOrderHistory.DataContext = ServiceOrders.getCustomerOrderHistoryToDisplay(currentUserEmail).DefaultView;
+
+    
+        }
+
+        private void btnCancelOrder_click(object sender, RoutedEventArgs e)
+        {
+
+            
+            DataRowView dataRow = (DataRowView)((Button)e.Source).DataContext;
+            if (dataRow[0].ToString() == "False")
+            {
+                int orderId = int.Parse(dataRow[1].ToString());
+                if (ServiceOrders.cancelOrder(orderId))
+                {
+                    String info = "successfully cancelled order";
+                    String caption = "info";
+                    MessageBoxButton boxButton = MessageBoxButton.OK;
+                    MessageBoxImage image = MessageBoxImage.Information;
+                    MessageBox.Show(info, caption, boxButton, image);
+                    dgOrderHistory.DataContext = ServiceOrders.getCustomerOrderHistoryToDisplay(currentUserEmail).DefaultView;
+                }
+
+            }
+            else
+            {
+                String info = "you can't cancel a confirmed order";
+                String caption = "info";
+                MessageBoxButton boxButton = MessageBoxButton.OK;
+                MessageBoxImage image = MessageBoxImage.Information;
+                MessageBox.Show(info, caption, boxButton, image);
+
+            }
+
         }
 
         private void btnShowProducts_Click(object sender, RoutedEventArgs e)
         {
-            
+            dgOrderHistory.Visibility = Visibility.Hidden;
+            DataGridProducts.Visibility = Visibility.Visible;
             DataGridProducts.DataContext = ServiceProducts.getProductsToDisplay().DefaultView;
             btnShowCart.Visibility = Visibility.Visible;
             btnConfirmOrder.Visibility = Visibility.Hidden;
