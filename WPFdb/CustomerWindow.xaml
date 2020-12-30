@@ -54,8 +54,6 @@
         <TextBox x:Name="txtSearch" Height="23" TextWrapping="Wrap" Text="TextBox" Width="120" RenderTransformOrigin="0.972,0.522" Margin="73,342,607,68"/>
 
 
-        <Button x:Name="btnOrderHistory" Content="Show Order History" HorizontalAlignment="Left" Margin="508,383,0,0" VerticalAlignment="Top" Width="120"/>
-
         <Button x:Name="btnShowProducts" Content="Show Products" HorizontalAlignment="Left" Margin="391,383,0,0" Width="93" Height="20" VerticalAlignment="Top" Click="btnShowProducts_Click"/>
         <Label x:Name="lblTotalPrice" Content="Total price: 0" HorizontalAlignment="Left" Margin="544,342,0,0" VerticalAlignment="Top"/>
         <Button Content="Search" HorizontalAlignment="Left" Margin="207,345,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.253,0.81" Click="btnShowSearch_Click"/>
