@@ -23,7 +23,7 @@ namespace WPFdb
     {
         private Boolean isUserSignedIn;
 
-        
+        private String currentUserEmail;
 
         public CustomerWindow()
         {
@@ -39,7 +39,7 @@ namespace WPFdb
 
         }
 
-        public CustomerWindow(Boolean logIn, String userName)
+        public CustomerWindow(Boolean logIn, String userEmail)
         {
             InitializeComponent();
 
@@ -50,10 +50,11 @@ namespace WPFdb
             btnShowProducts.Visibility = Visibility.Hidden;
             btnShowCart.IsEnabled = isUserSignedIn;
             this.isUserSignedIn = logIn;
+            currentUserEmail = userEmail;
             if (this.isUserSignedIn)
             {
                 btnCustomerLogInMenu.Visibility = Visibility.Hidden;
-                lblSingedInAs.Content = "Signed in as " + userName;
+                lblSingedInAs.Content = "Signed in as " + ServiceCustomer.getNameFromEmail(userEmail);
                 btnShowCart.IsEnabled = isUserSignedIn;
             }
             else
@@ -94,7 +95,12 @@ namespace WPFdb
         private void BtnShowCart_Click(object sender, RoutedEventArgs e)
         {
             DataView data = (DataView) DataGridProducts.ItemsSource;
-            DataGridProducts.DataContext = ServiceProducts.getShoppingListFromSelectedProducts(data.ToTable()).DefaultView;
+            DataTable shoppingCart = ServiceProducts.getShoppingListFromSelectedProducts(data.ToTable());
+            DataGridProducts.DataContext = shoppingCart.DefaultView;
+
+            double totalPriceOfCart = ServiceProducts.getTotalPriceOfCart(shoppingCart);
+
+            lblTotalPrice.Content = "Total price: " + totalPriceOfCart.ToString();
 
             btnShowCart.Visibility = Visibility.Hidden;
             btnConfirmOrder.Visibility = Visibility.Visible;
@@ -118,7 +124,8 @@ namespace WPFdb
 
         private void BtnConfirmOrder_Click(object sender, RoutedEventArgs e)
         {
-
+            DataView data = (DataView)DataGridProducts.ItemsSource;
+            ServiceOrders.customerConfirmOrder(currentUserEmail, data.ToTable());
 
 
 

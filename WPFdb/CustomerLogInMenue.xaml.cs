@@ -38,7 +38,7 @@ namespace WPFdb
 
             if (ServiceCustomer.isUserCredentialsCorrect(userEmail, password))
             {
-                costumerWindow = new CustomerWindow(true, ServiceCustomer.getNameFromEmail(userEmail));
+                costumerWindow = new CustomerWindow(true, userEmail);
                 System.Diagnostics.Debug.WriteLine(" user can sign in ");
 
             }

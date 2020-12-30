@@ -52,6 +52,16 @@ namespace WPFdb
 
         }
 
+
+        public static List<String[]> getAllProductsIncludingDiscount()
+        {
+
+            String cmd = "SELECT P.code, P.name, P.price, P.supplier, Discount.Precentage from Products as P FULL OUTER JOIN ActiveDiscounts on p.code = ActiveDiscounts.productCode FULL OUTER join Discount on discount.reason = ActiveDiscounts.discount";
+
+            return dbConnection.selectMultipleRows(cmd);
+
+        }
+
         public static List<String[]> getAllProductsToAdmin()
         {
             String cmd = "SELECT code, name, price, supplier, Quantity from Products";
@@ -79,7 +89,7 @@ namespace WPFdb
 
         public static DataTable getProductsToDisplay()
         {
-            List<String[]> list = getAllProducts();
+            List<String[]> list = getAllProductsIncludingDiscount();
             Console.WriteLine(" hallå " + list.Count);
             DataTable table = new DataTable();
             String[] columnHeader = new String[] { "Code", "Product", "Price", "Supplier", "Discount"};
@@ -112,6 +122,7 @@ namespace WPFdb
             return int.Parse(data.ElementAt(0));
         }
 
+
         public static DataTable getShoppingListFromSelectedProducts(DataTable table)
         {
            // DataTable table = allProducts;
@@ -124,6 +135,12 @@ namespace WPFdb
                 {
                     Console.WriteLine("adding " + i);
                     indexToDelete.Add(i);
+                }
+                else{
+                   if(row["Qty"].ToString() == "0")
+                    {
+                        row["Qty"] = "1";
+                    }
                 }
                 i++;
             }
@@ -160,6 +177,27 @@ namespace WPFdb
             List<String[]> returnedData = dbConnection.selectMultipleRows(cmd);
             return int.Parse(returnedData.ElementAt(0)[0]);
         } 
+
+        public static double getTotalPriceOfCart(DataTable cart)
+        {
+            double price = 0;
+            foreach (DataRow row in cart.Rows)
+            {
+
+
+                if (row["Discount"].ToString() != "")
+                {
+                    double discount = 1 - (double.Parse(row["Discount"].ToString()) / 100);
+                    Console.WriteLine(" flippar " + discount);
+                    price += double.Parse(row["Price"].ToString()) * double.Parse(row["Qty"].ToString()) * discount;
+
+                }
+                else
+                    price += double.Parse(row["Price"].ToString()) * double.Parse(row["Qty"].ToString());
+            }
+            Console.WriteLine("tot pris " + price);
+            return price;
+        }
 
 
 
