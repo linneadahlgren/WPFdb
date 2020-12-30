@@ -41,7 +41,7 @@ namespace WPFdb
         }
         public static List<String[]> getAllDiscounts()
         {
-            String cmd = "Select Name,Discount, start_date, end_date from activeDiscounts, Products where activeDiscounts.ProductCode = Products.Code;";
+            String cmd = "SELECT P.name,Discount, Start_date,End_date,P.price,Discount.Precentage,(Price-(Price*(0.01*Precentage))) from Products as P JOIN ActiveDiscounts on p.code = ActiveDiscounts.productCode join Discount on discount.reason = ActiveDiscounts.discount";
 
             return dbConnection.selectMultipleRows(cmd);
         }
@@ -50,7 +50,7 @@ namespace WPFdb
         {
             List<String[]> list = getAllDiscounts();
             DataTable table = new DataTable();
-            String[] column = new String[] { "Product Name","Discount", "Start date", "End date", "Price", "Discount Price" };
+            String[] column = new String[] { "Product Name","Discount", "Start date", "End date", "Price", "Precentage", "Discount Price" };
 
             foreach (var col in column)
                 table.Columns.Add(col);
