@@ -11,7 +11,7 @@
     <Grid Margin="0,0,-6.4,-13">
         <Button x:Name="btnCustomerLogInMenu" Content="Log In" HorizontalAlignment="Left" Margin="642,34,0,0" VerticalAlignment="Top" Width="75" Click="CustomerLogInMenu"/>
         <Button x:Name="btnShowCart" Content="Show Cart" HorizontalAlignment="Left" Margin="642,383,0,0" VerticalAlignment="Top" Width="94" Click="BtnShowCart_Click"/>
-        <Button x:Name="btnConfirmOrder" Content="Confirm Order" HorizontalAlignment="Left" Margin="642,383,0,0" VerticalAlignment="Top" Width="75" Visibility="Hidden" Click="BtnConfirmOrder_Click"/>
+        <Button x:Name="btnConfirmOrder" Content="Confirm Order" HorizontalAlignment="Left" Margin="642,383,0,0" VerticalAlignment="Top"  Visibility="Hidden" Width="94" Click="BtnConfirmOrder_Click"/>
 
         <Label x:Name="lblSingedInAs" Content="" HorizontalAlignment="Left" Margin="73,34,0,0" VerticalAlignment="Top" Width="438"/>
 
