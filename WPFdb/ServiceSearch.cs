@@ -12,7 +12,7 @@ namespace WPFdb
         {
             List<String[]> list = searching(search);
             DataTable searchTable = new DataTable();
-            String[] column = new string[] { "Code", "Product name", "Price", "Supplier" };
+            String[] column = new string[] { "Code", "Product name", "Price", "Supplier","Discounts"};
 
             foreach (var col in column)
                 searchTable.Columns.Add(col);
@@ -29,17 +29,18 @@ namespace WPFdb
             String cmd;
             if (search == "")
             {
-                return ServiceProducts.getAllProducts();
+                return ServiceProducts.getAllProductsIncludingDiscount();
 
 
             }
             else
             {
-                cmd = "select Code,Name,Price,Supplier from Products where name like " + "'%" + search + "%'";
-
+                //cmd = "select Code,Name,Price,Supplier from Products where name like " + "'%" + search + "%'";
+               cmd = "SELECT P.code, P.name, P.price, P.supplier, Discount.Precentage from Products as P FULL OUTER JOIN ActiveDiscounts on p.code = ActiveDiscounts.productCode FULL OUTER join Discount on discount.reason = ActiveDiscounts.discount where name like " + "'%" + search + "%' or Supplier like " + "'%" + search + "%' or Code like " + "'%" + search + "%' or Price like " + "'%" + search + "%'";
                 return dbConnection.selectMultipleRows(cmd);
             }
 
         }
+
     }
 }
