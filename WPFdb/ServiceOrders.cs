@@ -37,9 +37,13 @@ namespace WPFdb
                 }
                 
                 cmd = "INSERT INTO OrderedProducts (ProductCode, Price, Quantity, orderId) values (('" + productCode + "'), ('" + (int)price + "'), ('" + quantity + "'), ('" + orderId + "'))";
-                if (dbConnection.insertQuery(cmd) == 1)
+                if (dbConnection.insertQuery(cmd) == 1) {
                     Console.WriteLine("added a orderedproduct with id " + productCode);
+                    cmd = "UPDATE Products set Quantity = (SELECT Quantity from products where code = ('" + productCode + "'))-('"+quantity+"') Where code = ('" + productCode + "')";
+                    dbConnection.insertQuery(cmd);
+                }
 
+                    
             }
 
             return true;
@@ -63,7 +67,36 @@ namespace WPFdb
             return false;
         }
 
-        
+        public static DataTable getCustomerOrderHistoryToDisplay(String email)
+        {
+            List<String[]> orders = getCustomerOrderHistory(email);
+            DataTable table = new DataTable();
+            String[] colHeader = new string[] { "is confirmed", "orderId", "Ordered Date" };
+            foreach (var col in colHeader)
+                table.Columns.Add(col);
+
+            foreach (var order in orders)
+                table.Rows.Add(order);
+
+            return table;
+        }
+
+        public static Boolean cancelOrder(int orderId)
+        {
+            Console.WriteLine("cancel order with id " + orderId);
+
+            return false;
+        }
+
+        private static List<String[]> getCustomerOrderHistory(String email)
+        {
+            String cmd = "SELECT isConfirmed, id, orderedDate from Orders WHERE email = ('" + email + "')";
+            List<String[]> orders = dbConnection.selectMultipleRows(cmd);
+      
+            
+
+            return orders;
+        }
 
     }
 }
