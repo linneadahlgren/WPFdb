@@ -9,12 +9,6 @@
         Top="200" Left="200">
 
     <Grid Margin="0,0,-6.4,-13">
-        <Button x:Name="btnCustomerLogInMenu" Content="Log In" HorizontalAlignment="Left" Margin="642,34,0,0" VerticalAlignment="Top" Width="75" Click="CustomerLogInMenu"/>
-        <Button x:Name="btnShowCart" Content="Show Cart" HorizontalAlignment="Left" Margin="642,383,0,0" VerticalAlignment="Top" Width="94" Click="BtnShowCart_Click"/>
-        <Button x:Name="btnConfirmOrder" Content="Confirm Order" HorizontalAlignment="Left" Margin="642,383,0,0" VerticalAlignment="Top"  Visibility="Hidden" Width="94" Click="BtnConfirmOrder_Click"/>
-
-        <Label x:Name="lblSingedInAs" Content="" HorizontalAlignment="Left" Margin="73,34,0,0" VerticalAlignment="Top" Width="438"/>
-
         <DataGrid x:Name="DataGridProducts" HorizontalAlignment="Left" Height="262" Margin="73,75,0,0" VerticalAlignment="Top" Width="663" ItemsSource="{Binding}">
             <DataGrid.Columns>
 
@@ -22,7 +16,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
 
-                            <Button Name="btnAddQuantity" Content="Quantity" Click="addQuantity_Click" />
+                            <Button x:Name="btnAddQuantity" Content="Quantity" Click="addQuantity_Click" />
 
                         </DataTemplate>
 
@@ -50,8 +44,21 @@
 
         </DataGrid>
         <Button x:Name="btnOrderHistory" Content="Show Order History" HorizontalAlignment="Left" Margin="508,383,0,0" VerticalAlignment="Top" Width="120" Click="btnOrderHistory_Click"/>
+
+        <Button x:Name="btnCustomerLogInMenu" Content="Log In" HorizontalAlignment="Left" Margin="642,34,0,0" VerticalAlignment="Top" Width="75" Click="CustomerLogInMenu"/>
+        <Button x:Name="btnShowCart" Content="Show Cart" HorizontalAlignment="Left" Margin="642,383,0,0" VerticalAlignment="Top" Width="94" Click="BtnShowCart_Click"/>
+        <Button x:Name="btnConfirmOrder" Content="Confirm Order" HorizontalAlignment="Left" Margin="642,383,0,0" VerticalAlignment="Top"  Visibility="Hidden" Width="94" Click="BtnConfirmOrder_Click"/>
+
+
+        <Label x:Name="lblSingedInAs" HorizontalAlignment="Left" Margin="73,34,0,0" VerticalAlignment="Top" Width="438"/>
+        <TextBox x:Name="txtSearch" Height="23" TextWrapping="Wrap" Text="TextBox" Width="120" RenderTransformOrigin="0.972,0.522" Margin="73,342,607,68"/>
+
+
+        <Button x:Name="btnOrderHistory" Content="Show Order History" HorizontalAlignment="Left" Margin="508,383,0,0" VerticalAlignment="Top" Width="120"/>
+
         <Button x:Name="btnShowProducts" Content="Show Products" HorizontalAlignment="Left" Margin="391,383,0,0" Width="93" Height="20" VerticalAlignment="Top" Click="btnShowProducts_Click"/>
-        <Label x:Name="lblTotalPrice" Content="Total Price: 0" HorizontalAlignment="Left" Margin="625,342,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.911,0.508"/>
+        <Label x:Name="lblTotalPrice" Content="Total price: 0" HorizontalAlignment="Left" Margin="544,342,0,0" VerticalAlignment="Top"/>
+        <Button Content="Search" HorizontalAlignment="Left" Margin="207,345,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.253,0.81" Click="btnShowSearch_Click"/>
 
 
 

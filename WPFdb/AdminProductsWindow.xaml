@@ -17,7 +17,7 @@
             <MenuItem x:Name="MenuitemProduct" Header="_Products" Width="109"  />
             <MenuItem x:Name="MenuitemSuppliers" Header="_Suppliers" Width="109" Click="Suppliers_Click" />
             <MenuItem x:Name="MenuitemDiscounts" Header="_Discounts" Width="109" Click="Discounts_Click" />
-            <MenuItem x:Name="MenuitemOrders" Header="_Orders" Width="109"  />
+            <MenuItem x:Name="MenuitemOrders" Header="_Orders" Width="109" Click="Orders_Click"  />
             <MenuItem x:Name="MenuitemHistory" Header="_History" Width="109"  />
 
 
