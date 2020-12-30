@@ -12,7 +12,7 @@
         <Button x:Name="btnCustomerLogInMenu" Content="Log In" HorizontalAlignment="Left" Margin="642,34,0,0" VerticalAlignment="Top" Width="75" Click="CustomerLogInMenu"/>
         <Button x:Name="btnShowCart" Content="Show Cart" HorizontalAlignment="Left" Margin="642,383,0,0" VerticalAlignment="Top" Width="94" Click="BtnShowCart_Click"/>
         <Button x:Name="btnConfirmOrder" Content="Confirm Order" HorizontalAlignment="Left" Margin="642,383,0,0" VerticalAlignment="Top" Width="75" Visibility="Hidden" Click="BtnConfirmOrder_Click"/>
-
+        
         <Label x:Name="lblSingedInAs" Content="" HorizontalAlignment="Left" Margin="73,34,0,0" VerticalAlignment="Top" Width="438"/>
 
         <DataGrid x:Name="DataGridProducts" HorizontalAlignment="Left" Height="262" Margin="73,75,0,0" VerticalAlignment="Top" Width="663" ItemsSource="{Binding}">
@@ -34,7 +34,8 @@
         </DataGrid>
         <Button x:Name="btnOrderHistory" Content="Show Order History" HorizontalAlignment="Left" Margin="508,383,0,0" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btnShowProducts" Content="Show Products" HorizontalAlignment="Left" Margin="391,383,0,0" Width="93" Height="20" VerticalAlignment="Top" Click="btnShowProducts_Click"/>
-
+        <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="73,34,0,0" TextWrapping="Wrap" Text="Product test 1" VerticalAlignment="Top" Width="339"/>
+        <Button x:Name="btnShowSearch" Content="Search" HorizontalAlignment="Left" Margin="417,34,0,0" VerticalAlignment="Top" Width="94" Height="23" Click="btnShowSearch_Click"/>
 
 
     </Grid>
