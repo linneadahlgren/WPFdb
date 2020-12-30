@@ -65,6 +65,7 @@ namespace WPFdb
                                 {
                                     Console.WriteLine(sdr[i].ToString());
                                     tempList[i] = sdr[i].ToString();
+
                                 }
                                 fetchedData.Add(tempList);
                             }

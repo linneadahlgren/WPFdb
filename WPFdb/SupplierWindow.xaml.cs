@@ -61,5 +61,12 @@ namespace WPFdb
             discountsWindow.Show();
             this.Close();
         }
+        private void AdminOrdersItem_Click(object sender, RoutedEventArgs e)
+        {
+            AdminOrdersWindow ordersWindow = new AdminOrdersWindow();
+            ordersWindow.Show();
+            this.Close();
+
+        }
     }
 }
