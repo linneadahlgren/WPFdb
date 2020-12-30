@@ -145,6 +145,15 @@ namespace WPFdb
             btnConfirmOrder.Visibility = Visibility.Hidden;
             btnShowProducts.Visibility = Visibility.Hidden;
 
+
+        }
+
+        private void btnShowSearch_Click(object sender, RoutedEventArgs e)
+        {
+            
+                Console.WriteLine("Searching for product " + txtSearch.Text);               
+                DataGridProducts.DataContext = ServiceSearch.SearchingForProduct(txtSearch.Text).DefaultView;
+
         }
     }
 }

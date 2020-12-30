@@ -82,6 +82,7 @@
     <Compile Include="ServiceDiscount.cs" />
     <Compile Include="ServiceOrders.cs" />
     <Compile Include="ServiceProducts.cs" />
+    <Compile Include="ServiceSearch.cs" />
     <Compile Include="ServiceSupplier.cs" />
     <Compile Include="SupplierWindow.xaml.cs">
       <DependentUpon>SupplierWindow.xaml</DependentUpon>

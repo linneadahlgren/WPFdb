@@ -13,6 +13,7 @@
         <Button x:Name="btnShowCart" Content="Show Cart" HorizontalAlignment="Left" Margin="642,383,0,0" VerticalAlignment="Top" Width="94" Click="BtnShowCart_Click"/>
         <Button x:Name="btnConfirmOrder" Content="Confirm Order" HorizontalAlignment="Left" Margin="642,383,0,0" VerticalAlignment="Top"  Visibility="Hidden" Width="94" Click="BtnConfirmOrder_Click"/>
 
+
         <Label x:Name="lblSingedInAs" Content="" HorizontalAlignment="Left" Margin="73,34,0,0" VerticalAlignment="Top" Width="438"/>
 
         <DataGrid x:Name="DataGridProducts" HorizontalAlignment="Left" Height="262" Margin="73,75,0,0" VerticalAlignment="Top" Width="663" ItemsSource="{Binding}">
@@ -34,7 +35,6 @@
         </DataGrid>
         <Button x:Name="btnOrderHistory" Content="Show Order History" HorizontalAlignment="Left" Margin="508,383,0,0" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btnShowProducts" Content="Show Products" HorizontalAlignment="Left" Margin="391,383,0,0" Width="93" Height="20" VerticalAlignment="Top" Click="btnShowProducts_Click"/>
-        <Label x:Name="lblTotalPrice" Content="Total Price: 0" HorizontalAlignment="Left" Margin="625,342,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.911,0.508"/>
 
 
 
