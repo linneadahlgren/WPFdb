@@ -35,7 +35,6 @@ namespace WPFdb
             }
             else
             {
-                //cmd = "select Code,Name,Price,Supplier from Products where name like " + "'%" + search + "%'";
                cmd = "SELECT P.code, P.name, P.price, P.supplier, Discount.Precentage from Products as P FULL OUTER JOIN ActiveDiscounts on p.code = ActiveDiscounts.productCode FULL OUTER join Discount on discount.reason = ActiveDiscounts.discount where name like " + "'%" + search + "%' or Supplier like " + "'%" + search + "%' or Code like " + "'%" + search + "%' or Price like " + "'%" + search + "%'";
                 return dbConnection.selectMultipleRows(cmd);
             }
