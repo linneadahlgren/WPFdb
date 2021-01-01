@@ -199,6 +199,22 @@ namespace WPFdb
             return price;
         }
 
+        public static Boolean deleteProduct(int pc)
+        {
+
+            if (ServiceOrders.isProductOrederd(pc))
+                return false;
+            else
+            {
+                String cmd = "alter table orderedProducts nocheck constraint all;alter table activeDiscounts nocheck constraint all;delete from products where Code = ('" + pc + "');alter table activeDiscounts check constraint all;alter table orderedProducts check constraint all";
+             //   String cmd = "DELETE FROM products WHERE code = ('" + pc + "')";
+                if (dbConnection.insertQuery(cmd) == 1)
+                    return true;
+
+            }
+            return false;
+        }
+
 
 
 

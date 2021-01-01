@@ -36,8 +36,7 @@ namespace WPFdb
             tbxPrice.Text = price.ToString();
             setSupplier(ServiceSupplier.getAllSuppliers());
 
-            dgProducts.DataContext = ServiceProducts.getProductsToDisplayAdmin().DefaultView;
-
+            loadProductsToDataGrid();
         }
 
         private void setSupplier(String[] suppliers)
@@ -117,13 +116,6 @@ namespace WPFdb
             this.Close();
         }
 
-        private void CmboxSuppliers_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-
-
         private void Discounts_Click(object sender, RoutedEventArgs e)
         {           
                 DiscountsWindow discountsWindow = new DiscountsWindow();
@@ -131,10 +123,6 @@ namespace WPFdb
                 this.Close();
         }
 
-        private void cmboxSuppliers_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
         private void btn_UpdateQuantity(object sender, RoutedEventArgs e)
         {
@@ -164,6 +152,31 @@ namespace WPFdb
             AdminOrdersWindow ordersWindow = new AdminOrdersWindow();
             ordersWindow.Show();
             this.Close();
+
+        }
+
+        private void BtnDeleteProduct_Click(object sender, RoutedEventArgs e)
+        {
+
+            if(ServiceOrders.isProductOrederd(productCode))
+                MessageBox.Show("can not delete an ordered product", "info", MessageBoxButton.OK, MessageBoxImage.Information);
+            else
+            {
+                if (productCode != -1 && ServiceProducts.deleteProduct(productCode))
+                 {
+                    loadProductsToDataGrid();
+                    clearInputs();
+
+                }
+                else
+                    MessageBox.Show("something went wrong deleting a product", "info", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+
+        private void loadProductsToDataGrid()
+        {
+            dgProducts.DataContext = ServiceProducts.getProductsToDisplayAdmin().DefaultView;
 
         }
     }
