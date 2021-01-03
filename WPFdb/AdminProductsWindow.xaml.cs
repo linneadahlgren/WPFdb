@@ -109,12 +109,8 @@ namespace WPFdb
         }
 
        
-        private void Suppliers_Click(object sender, RoutedEventArgs e)
-        {
-            SupplierWindow supplier = new SupplierWindow();
-            supplier.Show();
-            this.Close();
-        }
+     
+
 
         private void Discounts_Click(object sender, RoutedEventArgs e)
         {           
@@ -128,6 +124,7 @@ namespace WPFdb
             history.Show();
             this.Close();
         }
+
 
 
         private void btn_UpdateQuantity(object sender, RoutedEventArgs e)
@@ -158,7 +155,18 @@ namespace WPFdb
             AdminOrdersWindow ordersWindow = new AdminOrdersWindow();
             ordersWindow.Show();
             this.Close();
-
+        }
+        private void Suppliers_Click(object sender, RoutedEventArgs e)
+        {
+            SupplierWindow supplier = new SupplierWindow();
+            supplier.Show();
+            this.Close();
+        }
+        private void Discounts_Click(object sender, RoutedEventArgs e)
+        {
+            DiscountsWindow discountsWindow = new DiscountsWindow();
+            discountsWindow.Show();
+            this.Close();
         }
 
         private void BtnDeleteProduct_Click(object sender, RoutedEventArgs e)
