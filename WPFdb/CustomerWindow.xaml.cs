@@ -140,6 +140,8 @@ namespace WPFdb
 
             DataGridProducts.Visibility = Visibility.Hidden;
             dgOrderHistory.Visibility = Visibility.Visible;
+            btnShowProducts.Visibility = Visibility.Visible;
+
             dgOrderHistory.DataContext = ServiceOrders.getCustomerOrderHistoryToDisplay(currentUserEmail).DefaultView;
 
     
