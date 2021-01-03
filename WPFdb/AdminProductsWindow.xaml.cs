@@ -110,25 +110,11 @@ namespace WPFdb
         }
 
        
-        private void Suppliers_Click(object sender, RoutedEventArgs e)
-        {
-            SupplierWindow supplier = new SupplierWindow();
-            supplier.Show();
-            this.Close();
-        }
+     
 
         private void CmboxSuppliers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-        }
-
-
-
-        private void Discounts_Click(object sender, RoutedEventArgs e)
-        {           
-                DiscountsWindow discountsWindow = new DiscountsWindow();
-                discountsWindow.Show();
-                this.Close();
         }
 
         private void cmboxSuppliers_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -164,7 +150,18 @@ namespace WPFdb
             AdminOrdersWindow ordersWindow = new AdminOrdersWindow();
             ordersWindow.Show();
             this.Close();
-
+        }
+        private void Suppliers_Click(object sender, RoutedEventArgs e)
+        {
+            SupplierWindow supplier = new SupplierWindow();
+            supplier.Show();
+            this.Close();
+        }
+        private void Discounts_Click(object sender, RoutedEventArgs e)
+        {
+            DiscountsWindow discountsWindow = new DiscountsWindow();
+            discountsWindow.Show();
+            this.Close();
         }
     }
 }

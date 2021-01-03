@@ -42,6 +42,12 @@ namespace WPFdb
             discountsWindow.Show();
             this.Close();
         }
+        private void Products_Click(object sender, RoutedEventArgs e)
+        {
+            AdminProductsWindow product = new AdminProductsWindow();
+            product.Show();
+            this.Close(); 
+        }
         private void btnSelectOrder_Click(object sender, RoutedEventArgs e)
         {
             DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;

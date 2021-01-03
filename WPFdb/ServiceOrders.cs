@@ -96,17 +96,11 @@ namespace WPFdb
             return false;
 
         }
-    
-
-
-
-
-
 
         public static Boolean customerConfirmOrder(String email, DataTable products)
         {
 
-            String cmd = "INSERT into Orders (Email, isConfirmed, OrderedDate) values (('" + email + "'), 0, ('" + DateTime.Today + "'))";
+            String cmd = "INSERT into Orders (Email, isConfirmed, OrderedDate) values (('" + email + "'), 0, ('" + DateTime.Now.ToString("yyyy/MM/dd") + "'))";
             Boolean orderedProductId = false;
             if (dbConnection.insertQuery(cmd) == 1)
             {
