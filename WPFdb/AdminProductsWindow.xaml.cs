@@ -34,18 +34,15 @@ namespace WPFdb
 
             tbxPrice.IsEnabled = false;
             tbxPrice.Text = price.ToString();
-            setSupplier(ServiceSupplier.getAllSuppliers());
+            setSupplierinCombobox(ServiceSupplier.getAllSuppliers());
 
             loadProductsToDataGrid();
         }
 
-        private void setSupplier(String[] suppliers)
+        private void setSupplierinCombobox(String[] suppliers)
         {
             for (int i = 0; i < suppliers.Length; i++)
-            {
                 cmboxSuppliers.Items.Add(suppliers[i]);
-                System.Diagnostics.Debug.WriteLine("suppliers??? " + suppliers[i]);
-            }
         }
 
         private void btnSelectProduct(object sender, RoutedEventArgs e)
@@ -191,7 +188,7 @@ namespace WPFdb
         private void btnShowAdminSearch_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("Searching for product " + txtAdminSearchForProducts.Text);
-            dgProducts.DataContext = ServiceSearch.searchingForAdminProduct(txtAdminSearchForProducts.Text).DefaultView;
+            dgProducts.DataContext = ServiceSearch.getAdminProductsWithSearch(txtAdminSearchForProducts.Text).DefaultView;
         }
     }
 }

@@ -62,8 +62,6 @@ namespace WPFdb
             int ID = int.Parse(dataRowView["ID"].ToString());
             dgOrderSpecs.DataContext = ServiceOrders.getOrderSpecsToDisplay(ID).DefaultView;
             
-
-            Console.WriteLine("testclick");
         }
         private void btnSeeAllOrders_Click(object sender, RoutedEventArgs e)
         {

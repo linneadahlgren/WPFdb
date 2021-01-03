@@ -25,7 +25,6 @@ namespace WPFdb
         public static List<String[]> searching(String search)
         {
 
-            Console.WriteLine("Testar" + search);
             String cmd;
             if (search == "")
             {
@@ -42,8 +41,6 @@ namespace WPFdb
         }
         public static List<String[]> searchingForAdmin(String search)
         {
-
-            Console.WriteLine("Testar" + search);
             String cmd;
             if (search == "")
             {
@@ -58,7 +55,7 @@ namespace WPFdb
             }
 
         }
-        public static DataTable searchingForAdminProduct(String search)
+        public static DataTable getAdminProductsWithSearch(String search)
         {
             List<String[]> list = searchingForAdmin(search);
             DataTable searchTable = new DataTable();

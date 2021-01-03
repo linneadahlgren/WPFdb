@@ -131,8 +131,19 @@ namespace WPFdb
         private void BtnConfirmOrder_Click(object sender, RoutedEventArgs e)
         {
             DataView data = (DataView)DataGridProducts.ItemsSource;
-            ServiceOrders.customerConfirmOrder(currentUserEmail, data.ToTable());
+            
+         Boolean isSuccessful =   ServiceOrders.customerConfirmOrder(currentUserEmail, data.ToTable());
+            if (isSuccessful)
+            {
+                DataGridProducts.DataContext = "";
+                MessageBox.Show("successfully placed order", "info", MessageBoxButton.OK, MessageBoxImage.Information);
 
+            }
+            else
+            {
+                MessageBox.Show("something went wrong when placing order", "info", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            }
         }
 
         private void btnOrderHistory_Click(object sender, RoutedEventArgs e)

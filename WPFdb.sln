@@ -27,6 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Windows", "Windows", "{BD7D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Admin", "Admin", "{427A08EC-A401-4758-AE19-E59D8BE51341}"
 	ProjectSection(SolutionItems) = preProject
+		WPFdb\AdminHistoryWindow.xaml.cs = WPFdb\AdminHistoryWindow.xaml.cs
 		WPFdb\AdminLogInWindow.xaml.cs = WPFdb\AdminLogInWindow.xaml.cs
 		WPFdb\AdminOrdersWindow.xaml.cs = WPFdb\AdminOrdersWindow.xaml.cs
 		WPFdb\AdminProductsWindow.xaml.cs = WPFdb\AdminProductsWindow.xaml.cs
@@ -36,6 +37,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Admin", "Admin", "{427A08EC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{D1177028-5FED-4DDA-B396-8C9C3E6CB7D3}"
 	ProjectSection(SolutionItems) = preProject
+		WPFdb\AdminHistoryWindow.xaml = WPFdb\AdminHistoryWindow.xaml
 		WPFdb\AdminLogInWindow.xaml = WPFdb\AdminLogInWindow.xaml
 		WPFdb\AdminOrdersWindow.xaml = WPFdb\AdminOrdersWindow.xaml
 		WPFdb\AdminProductsWindow.xaml = WPFdb\AdminProductsWindow.xaml
