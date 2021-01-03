@@ -49,12 +49,14 @@ namespace WPFdb
             this.Close();
         }
 
-        private void AdminSupplierItem_Click(object sender, RoutedEventArgs e)
+
+        private void History_Click(object sender, RoutedEventArgs e)
         {
-                SupplierWindow supplier = new SupplierWindow();
-                supplier.Show();
-                this.Close();          
+            AdminHistoryWindow history = new AdminHistoryWindow();
+            history.Show();
+            this.Close();
         }
+
         private void AdminDiscountItem_Click (object sender, RoutedEventArgs e)
         {
             DiscountsWindow discountsWindow = new DiscountsWindow();

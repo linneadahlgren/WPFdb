@@ -37,7 +37,7 @@
             <MenuItem x:Name="MenuitemSuppliers" Header="_Suppliers" Width="109" Click="Suppliers_Click" />
             <MenuItem x:Name="MenuitemDiscounts" Header="_Discounts" Width="109" Click="Discounts_Click" />
             <MenuItem x:Name="MenuitemOrders" Header="_Orders" Width="109"  Click="Orders_Click"/>
-            <MenuItem x:Name="MenuitemHistory" Header="_History" Width="109"  />
+            <MenuItem x:Name="MenuitemHistory" Header="_History" Width="109" Click="History_Click" />
         </Menu>
         <DataGrid x:Name="DataDiscountHistory" HorizontalAlignment="Left" Height="102" Margin="10,291,0,0" VerticalAlignment="Top" Width="591" ItemsSource="{Binding}">
             <DataGrid.Columns>

@@ -46,7 +46,13 @@ namespace WPFdb
             this.Close();
 
         }
-      
+        private void Products_Click(object sender, RoutedEventArgs e)
+        {
+            AdminProductsWindow product = new AdminProductsWindow();
+            product.Show();
+            this.Close();
+        }
+
         private void SeeMonth_Click(object sender, RoutedEventArgs e)
         {
             String month = "";

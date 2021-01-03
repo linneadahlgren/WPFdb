@@ -125,6 +125,14 @@ namespace WPFdb
 
         }
 
+        private void History_Click(object sender, RoutedEventArgs e)
+        {
+            AdminHistoryWindow history = new AdminHistoryWindow();
+            history.Show();
+            this.Close();
+        }
+
+
         private void txtDiscountName_TextChanged(object sender, TextChangedEventArgs e)
         {
 

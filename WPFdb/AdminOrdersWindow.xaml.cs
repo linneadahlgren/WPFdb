@@ -48,6 +48,14 @@ namespace WPFdb
             product.Show();
             this.Close(); 
         }
+
+        private void History_Click(object sender, RoutedEventArgs e)
+        {
+            AdminHistoryWindow history = new AdminHistoryWindow();
+            history.Show();
+            this.Close();
+        }
+
         private void btnSelectOrder_Click(object sender, RoutedEventArgs e)
         {
             DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;

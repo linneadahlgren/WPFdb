@@ -13,7 +13,7 @@
             <MenuItem x:Name="supplierItem" Header="_Suppliers" Width="109" Click="AdminSupplierItem_Click" />
             <MenuItem x:Name="DiscountItem" Header="_Discounts" Width="109" Click="AdminDiscountItem_Click"/>
             <MenuItem x:Name="OrdersItem"   Header="_Orders" Width="109" Click="AdminOrdersItem_Click"/>
-            <MenuItem Header="_History" Width="109" />
+            <MenuItem Header="_History" Width="109" Click="History_Click"/>
 
 
         </Menu>
