@@ -140,6 +140,17 @@ namespace WPFdb
             return false;
         }
 
+
+        public static Boolean isProductOrederd(int pc)
+        {
+            String cmd = "SELECT productCode from OrderedProducts where productCode = ('" + pc + "') ";
+            List<String[]> returnData = dbConnection.selectMultipleRows(cmd);
+            if (returnData.Count > 0)
+                return true;
+            else
+                return false;
+        }
+
         private static Boolean cancelProducts(int orderID)
         {
             String cmd = "SELECT productCode, Quantity from OrderedProducts where orderId = ('" + orderID + "')";
