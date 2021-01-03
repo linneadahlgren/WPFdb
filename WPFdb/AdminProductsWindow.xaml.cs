@@ -179,5 +179,11 @@ namespace WPFdb
             dgProducts.DataContext = ServiceProducts.getProductsToDisplayAdmin().DefaultView;
 
         }
+
+        private void btnShowAdminSearch_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("Searching for product " + txtAdminSearchForProducts.Text);
+            dgProducts.DataContext = ServiceSearch.searchingForAdminProduct(txtAdminSearchForProducts.Text).DefaultView;
+        }
     }
 }

@@ -64,7 +64,8 @@
 
             </DataGrid.Columns>
         </DataGrid>
-
+        <TextBox x:Name="txtAdminSearchForProducts" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="121,294,0,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnAdminSearchForProducts" Content="Search" HorizontalAlignment="Left" Margin="246,294,0,0" VerticalAlignment="Top" Width="70" Grid.Column="1" Height="23" Click="btnShowAdminSearch_Click" />
 
     </Grid>
 </Window>
