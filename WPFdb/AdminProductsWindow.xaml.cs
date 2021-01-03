@@ -112,6 +112,20 @@ namespace WPFdb
      
 
 
+        private void Discounts_Click(object sender, RoutedEventArgs e)
+        {           
+                DiscountsWindow discountsWindow = new DiscountsWindow();
+                discountsWindow.Show();
+                this.Close();
+        }
+        private void History_Click(object sender, RoutedEventArgs e)
+        {
+            AdminHistoryWindow history = new AdminHistoryWindow();
+            history.Show();
+            this.Close();
+        }
+
+
 
         private void btn_UpdateQuantity(object sender, RoutedEventArgs e)
         {
