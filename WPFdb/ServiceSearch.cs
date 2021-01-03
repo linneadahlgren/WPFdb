@@ -40,6 +40,37 @@ namespace WPFdb
             }
 
         }
+        public static List<String[]> searchingForAdmin(String search)
+        {
 
+            Console.WriteLine("Testar" + search);
+            String cmd;
+            if (search == "")
+            {
+                return ServiceProducts.getAllProducts();
+
+
+            }
+            else
+            {
+                cmd = "SELECT P.code, P.name, P.price, P.supplier from Products as P where name like " + "'%" + search + "%' or Supplier like " + "'%" + search + "%' or Code like " + "'%" + search + "%' ";
+                return dbConnection.selectMultipleRows(cmd);
+            }
+
+        }
+        public static DataTable searchingForAdminProduct(String search)
+        {
+            List<String[]> list = searchingForAdmin(search);
+            DataTable searchTable = new DataTable();
+            String[] column = new string[] { "Code", "Product name", "Price", "Supplier", "Discounts" };
+
+            foreach (var col in column)
+                searchTable.Columns.Add(col);
+
+            foreach (var array in list)
+                searchTable.Rows.Add(array);
+
+            return searchTable;
+        }
     }
 }
