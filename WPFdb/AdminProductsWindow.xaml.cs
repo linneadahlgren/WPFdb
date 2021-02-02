@@ -52,7 +52,7 @@ namespace WPFdb
 
             tbxProductName.Text = dataRowView["Product"].ToString();
             cmboxSuppliers.SelectedValue = dataRowView["Supplier"].ToString();
-            tbxQuantity.Text = dataRowView["Quanity"].ToString();
+            tbxQuantity.Text = dataRowView["Quantity"].ToString();
             tbxPrice.Text = dataRowView["Price"].ToString();
 
             quantity = int.Parse(tbxQuantity.Text);

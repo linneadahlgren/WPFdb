@@ -50,7 +50,7 @@ namespace WPFdb
             }
             else
             {
-                cmd = "SELECT P.code, P.name, P.price, P.supplier from Products as P where name like " + "'%" + search + "%' or Supplier like " + "'%" + search + "%' or Code like " + "'%" + search + "%' ";
+                cmd = "SELECT P.code, P.name, P.price, P.supplier, P.Quantity from Products as P where name like " + "'%" + search + "%' or Supplier like " + "'%" + search + "%' or Code like " + "'%" + search + "%' ";
                 return dbConnection.selectMultipleRows(cmd);
             }
 
@@ -59,7 +59,7 @@ namespace WPFdb
         {
             List<String[]> list = searchingForAdmin(search);
             DataTable searchTable = new DataTable();
-            String[] column = new string[] { "Code", "Product name", "Price", "Supplier", "Discounts" };
+            String[] column = new string[] { "Code", "Product", "Price", "Supplier", "Quantity" };
 
             foreach (var col in column)
                 searchTable.Columns.Add(col);

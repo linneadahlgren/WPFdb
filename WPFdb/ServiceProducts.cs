@@ -77,7 +77,7 @@ namespace WPFdb
             List<String[]> list = getAllProductsToAdmin();
             Console.WriteLine(" hallå " + list.Count);
             DataTable table = new DataTable();
-            String[] columnHeader = new String[] { "Code", "Product", "Price", "Supplier", "Quanity"};
+            String[] columnHeader = new String[] { "Code", "Product", "Price", "Supplier", "Quantity" };
             foreach (var col in columnHeader)
                 table.Columns.Add(col);
 
